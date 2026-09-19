@@ -1,0 +1,42 @@
+[
+  {
+    "id": "html",
+    "title": "Intro HTML",
+    "hash": "html",
+    "dataFile": "data/html.json",
+    "order": 1,
+    "description": "Learn HTML from the absolute beginning: documents, elements, text, links, images, lists, tables, and forms."
+  },
+  {
+    "id": "advanced-html",
+    "title": "Advanced HTML",
+    "hash": "advanced-html",
+    "dataFile": "data/advanced-html.json",
+    "order": 2,
+    "description": "Semantic structure, interactive elements, media, accessibility, metadata, and features that pair with JavaScript."
+  },
+  {
+    "id": "css",
+    "title": "CSS",
+    "hash": "css",
+    "dataFile": "data/css.json",
+    "order": 3,
+    "description": "Style and layout websites with selectors, the box model, Flexbox, Grid, responsive design, and modern CSS."
+  },
+  {
+    "id": "javascript",
+    "title": "JavaScript",
+    "hash": "javascript",
+    "dataFile": "data/javascript.json",
+    "order": 4,
+    "description": "Make pages interactive: variables, functions, the DOM, events, storage, fetch, and more."
+  },
+  {
+    "id": "github-pages",
+    "title": "GitHub Pages",
+    "hash": "github-pages",
+    "dataFile": "data/github-pages.json",
+    "order": 5,
+    "description": "A practical step-by-step guide to creating and publishing a website with GitHub Pages."
+  }
+]

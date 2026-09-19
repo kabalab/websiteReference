@@ -1,0 +1,3368 @@
+{
+  "id": "html",
+  "title": "Intro HTML",
+  "hash": "html",
+  "intro": "HTML is the structure of every web page. This section starts from absolute zero: what HTML is, how documents are built, and the elements you use every day for text, links, images, lists, tables, and forms.",
+  "subsections": [
+    {
+      "id": "fundamentals",
+      "title": "HTML Fundamentals",
+      "description": "The ideas and document pieces everything else builds on.",
+      "topics": [
+        {
+          "tags": [
+            "html",
+            "basics",
+            "intro"
+          ],
+          "level": "beginner",
+          "summary": "HTML describes the structure and meaning of content on a web page.",
+          "description": "HTML stands for HyperText Markup Language. It is not a programming language that calculates or makes decisions. Instead, it is a markup language: you wrap content in tags that tell the browser what each piece of content is — a heading, a paragraph, an image, a button, and so on. The browser reads those tags and builds a visual page you can see and interact with. Think of HTML as the skeleton of a website. CSS is the clothing and styling. JavaScript is the muscles that add behavior.",
+          "whenToUse": "Use HTML whenever you need to create or structure content for a web page.",
+          "whenNotToUse": "Do not use HTML alone when you need complex styling (use CSS) or interactive behavior like responding to clicks with logic (use JavaScript).",
+          "useCases": [
+            {
+              "title": "A tiny HTML snippet",
+              "explanation": "Even two tags are enough for the browser to show structured content.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h1>Hello, world</h1>\n<p>This sentence is a paragraph of text.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Thinking HTML can replace CSS for layout and colors.",
+            "Assuming HTML “runs” like a program — it is declared structure, not step-by-step logic."
+          ],
+          "beginnerTips": [
+            "Read HTML from the outside in: outer tags wrap inner content.",
+            "If you can name what a piece of content is (heading, list, form), there is usually an HTML element for it."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "how-html-works",
+              "label": "How HTML works"
+            },
+            {
+              "section": "css",
+              "topic": "what-is-css",
+              "label": "What CSS is"
+            }
+          ],
+          "id": "what-is-html",
+          "title": "What HTML is",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "browser",
+            "parsing",
+            "basics"
+          ],
+          "level": "beginner",
+          "summary": "The browser downloads HTML, parses tags into a document tree, then paints the page.",
+          "description": "When you visit a website, your browser requests an HTML file from a server. The browser then parses (reads and interprets) the HTML. Parsing builds an internal tree called the DOM (Document Object Model) — a structured map of every element. The browser uses that tree plus CSS to decide layout and appearance, then paints pixels on the screen. You do not need to memorize browser internals to write HTML, but knowing this flow explains why invalid or incomplete tags can produce surprising results.",
+          "whenToUse": "Keep this mental model when debugging why something does not appear as expected.",
+          "whenNotToUse": "You do not need to think about parsing for every simple page you write.",
+          "useCases": [
+            {
+              "title": "What the browser receives",
+              "explanation": "Your source code becomes a live document the browser can display.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>The browser turns this tag into a paragraph node in the page tree.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "If something is missing on the page, view the page source or use DevTools to inspect the DOM.",
+            "Browsers try to recover from mistakes, which can hide errors until a page behaves oddly."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "elements",
+              "label": "Elements"
+            },
+            {
+              "section": "javascript",
+              "topic": "document",
+              "label": "document (DOM)"
+            }
+          ],
+          "id": "how-html-works",
+          "title": "How HTML works",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "document",
+            "file",
+            "basics"
+          ],
+          "level": "beginner",
+          "summary": "An HTML document is a text file (usually .html) that describes one web page.",
+          "description": "A typical website is made of one or more HTML documents. The main entry page is often named index.html because servers look for that name by default. Inside the file you write plain text plus tags. You can open an HTML file directly in a browser for learning, but features that load other files with JavaScript (like this reference site’s JSON content) need a local server.",
+          "whenToUse": "Create an .html file whenever you start a new page.",
+          "whenNotToUse": "Do not put an entire multi-page app’s logic only in one giant unorganized file if you can split responsibly — but for beginners, one file is fine.",
+          "useCases": [
+            {
+              "title": "Minimal document",
+              "explanation": "This is the smallest complete HTML5 document pattern you should memorize.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>My First Page</title>\n</head>\n<body>\n  <p>Document content goes in the body.</p>\n</body>\n</html>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Saving as .txt and wondering why the browser shows raw tags."
+          ],
+          "beginnerTips": [
+            "Always save with a .html extension.",
+            "Use UTF-8 encoding so special characters work."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "document-structure",
+              "label": "Document structure"
+            },
+            {
+              "section": "html",
+              "topic": "doctype",
+              "label": "<!DOCTYPE html>"
+            }
+          ],
+          "id": "html-documents",
+          "title": "HTML documents",
+          "syntax": "my-page.html  →  open in a browser",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "elements",
+            "basics"
+          ],
+          "level": "beginner",
+          "summary": "An element is a unit of HTML: usually an opening tag, content, and a closing tag.",
+          "description": "An HTML element is the combination of tags and the content between them. For example, <p>Hello</p> is a paragraph element. Some elements are empty (void): they do not wrap content, like <img> or <br>. Elements can contain text, other elements, or both. Learning HTML is largely learning which elements exist and what meaning they carry.",
+          "whenToUse": "Choose an element that matches the meaning of your content.",
+          "whenNotToUse": "Avoid wrapping everything in <div> when a more meaningful element exists.",
+          "useCases": [
+            {
+              "title": "Element with content",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<strong>This entire strong element emphasizes text.</strong>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "Name the purpose of the content first, then pick the element."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "tags",
+              "label": "Tags"
+            },
+            {
+              "section": "html",
+              "topic": "nesting",
+              "label": "Nesting"
+            }
+          ],
+          "id": "elements",
+          "title": "Elements",
+          "syntax": "<tagname>content</tagname>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tags",
+            "syntax"
+          ],
+          "level": "beginner",
+          "summary": "Tags are the <name> markers that create elements.",
+          "description": "A tag is written with angle brackets: <p> starts a paragraph. Most tags come in pairs. The opening tag can also hold attributes (extra information). Tag names are not case-sensitive in HTML5, but the standard practice is lowercase: write <p>, not <P>.",
+          "whenToUse": "Use tags to mark up every piece of structured content.",
+          "whenNotToUse": "Do not invent fake tag names and expect browsers to understand them as built-ins (custom elements are an advanced topic).",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<em>Opening tag, content, closing tag.</em>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Forgetting the closing tag for non-void elements.",
+            "Misspelling tag names (e.g. <paragrap>)."
+          ],
+          "beginnerTips": [
+            "If the page looks wrong, check for unclosed tags first."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "opening-closing-tags",
+              "label": "Opening and closing tags"
+            }
+          ],
+          "id": "tags",
+          "title": "Tags",
+          "syntax": "<tag> … </tag>   or   <void-tag>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tags",
+            "syntax"
+          ],
+          "level": "beginner",
+          "summary": "Most elements need both an opening tag and a matching closing tag.",
+          "description": "An opening tag looks like <h1>. A closing tag looks like </h1> — same name with a slash. Everything between them belongs to that element. Void elements like <img>, <br>, <hr>, <input>, and <meta> do not get closing tags. In modern HTML you write <br>, not <br></br>.",
+          "whenToUse": "Always close non-void elements.",
+          "whenNotToUse": "Do not add closing tags to void elements.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Correctly closed paragraph.</p>\n<br>\n<p>Line break above came from a void tag.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Writing </img>.",
+            "Closing the wrong tag name."
+          ],
+          "beginnerTips": [
+            "Indent nested tags so opening/closing pairs are easy to see."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "nesting",
+              "label": "Nesting"
+            }
+          ],
+          "id": "opening-closing-tags",
+          "title": "Opening and closing tags",
+          "syntax": "<p>Text</p>\n<br>\n<img src=\"photo.jpg\" alt=\"A photo\">",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "attributes",
+            "syntax"
+          ],
+          "level": "beginner",
+          "summary": "Attributes add extra information to an element inside the opening tag.",
+          "description": "Attributes appear in the opening tag as name=\"value\" pairs. Examples: href on links, src and alt on images, type on inputs. Attributes configure behavior or provide metadata. Boolean attributes like required or disabled can appear with just the name: <input required>. Values should be quoted. Attribute names are lowercase by convention.",
+          "whenToUse": "When an element needs configuration (URL, text alternative, input type, etc.).",
+          "whenNotToUse": "Do not stuff visible paragraph text into attributes — put content between tags.",
+          "useCases": [
+            {
+              "title": "Attributes on a link",
+              "explanation": "href tells the browser where to go; title adds advisory text.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"https://example.com\" title=\"Example site\">Visit example.com</a>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Forgetting quotes around values with spaces.",
+            "Putting attributes on the closing tag."
+          ],
+          "beginnerTips": [
+            "Learn the important attributes per element; you do not need every possible attribute memorized."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "a",
+              "label": "<a>"
+            },
+            {
+              "section": "advanced-html",
+              "topic": "id-attribute",
+              "label": "id"
+            }
+          ],
+          "id": "attributes",
+          "title": "Attributes",
+          "syntax": "<tag attribute=\"value\" another=\"value\">content</tag>",
+          "attributes": [
+            {
+              "name": "id",
+              "description": "Unique identifier for one element on the page."
+            },
+            {
+              "name": "class",
+              "description": "One or more labels used mainly for CSS and JavaScript."
+            },
+            {
+              "name": "title",
+              "description": "Advisory text often shown as a tooltip."
+            }
+          ]
+        },
+        {
+          "tags": [
+            "nesting",
+            "structure"
+          ],
+          "level": "beginner",
+          "summary": "Elements can contain other elements — this is called nesting.",
+          "description": "Nesting means placing elements inside other elements. For example, a list item <li> nests inside <ul>. Nesting must be proper: close inner tags before outer tags. Wrong: <p><strong>text</p></strong>. Right: <p><strong>text</strong></p>. Proper nesting builds a clean tree the browser (and accessibility tools) can understand.",
+          "whenToUse": "Whenever content has hierarchy (lists, articles inside main, bold words inside paragraphs).",
+          "whenNotToUse": "Do not nest interactive elements invalidly (e.g. a link inside another link).",
+          "useCases": [
+            {
+              "title": "Valid nesting",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<ul>\n  <li>First <strong>nested</strong> item</li>\n  <li>Second item</li>\n</ul>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Crossing tags instead of nesting them.",
+            "Forgetting to close an inner tag."
+          ],
+          "beginnerTips": [
+            "Use indentation: each nested level adds spaces or a tab."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "parent-child",
+              "label": "Parent and child elements"
+            }
+          ],
+          "id": "nesting",
+          "title": "Nesting",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "dom",
+            "nesting"
+          ],
+          "level": "beginner",
+          "summary": "A parent contains children; children sit inside a parent.",
+          "description": "In the document tree, if <ul> contains <li> elements, the <ul> is the parent and each <li> is a child. Elements at the same level under one parent are siblings. These family words are used constantly in CSS (child selectors) and JavaScript (parentNode, children). Understanding parent/child relationships makes styling and scripting much easier.",
+          "whenToUse": "When reasoning about structure, CSS selectors, or DOM scripts.",
+          "whenNotToUse": "You do not need the vocabulary to write your first paragraphs — but learn it early.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<div>\n  <p>I am a child of the div.</p>\n  <p>I am also a child (and a sibling of the first paragraph).</p>\n</div>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "In DevTools, the indented tree view shows parents and children clearly."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "css",
+              "topic": "child",
+              "label": "Child selectors"
+            },
+            {
+              "section": "javascript",
+              "topic": "document",
+              "label": "DOM"
+            }
+          ],
+          "id": "parent-child",
+          "title": "Parent and child elements",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "comments"
+          ],
+          "level": "beginner",
+          "summary": "HTML comments note things for humans and are ignored by the browser display.",
+          "description": "Comments let you leave notes in the code without showing them as page content. They start with <!-- and end with -->. Use them to mark sections or temporarily disable markup while learning. Do not put sensitive secrets in comments — anyone can view page source.",
+          "whenToUse": "To label regions of a file or leave reminders for yourself or teammates.",
+          "whenNotToUse": "Do not comment out huge chunks long-term; delete unused code or use version control.",
+          "useCases": [
+            {
+              "title": "Comments are invisible in the rendered page",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<!-- Navigation starts here -->\n<p>You will not see the comment above on the page.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Forgetting to close a comment, which can hide the rest of the page."
+          ],
+          "beginnerTips": [
+            "Keep comments short and useful."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "comments",
+          "title": "Comments",
+          "syntax": "<!-- This is a comment -->",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "whitespace",
+            "formatting"
+          ],
+          "level": "beginner",
+          "summary": "Extra spaces and line breaks in HTML source usually collapse into a single space in text.",
+          "description": "In normal text flow, browsers collapse sequences of spaces, tabs, and newlines into one space. That means you can format your code with indentation and line breaks for readability without changing what users see. If you need to preserve exact spacing (like poetry or code), use <pre> or CSS white-space — not dozens of &nbsp; entities.",
+          "whenToUse": "Freely format your source for readability.",
+          "whenNotToUse": "Do not rely on source indentation to create visual layout — use CSS.",
+          "useCases": [
+            {
+              "title": "Collapsed whitespace",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>This    text\nhas     messy\n     spacing in the source.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "Pretty source code helps you spot nesting errors."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "pre",
+              "label": "<pre>"
+            }
+          ],
+          "id": "whitespace",
+          "title": "Whitespace",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "entities",
+            "characters"
+          ],
+          "level": "beginner",
+          "summary": "Entities let you write special characters like <, >, and & safely in HTML.",
+          "description": "The characters < and > start and end tags, so if you want to show them as visible text you need entities: &lt; for <, &gt; for >, &amp; for &, &quot; for \", and &nbsp; for a non-breaking space. Many symbols also have named entities (&copy; for ©). You can also use numeric entities. Prefer UTF-8 characters directly when you can (like ©), and use entities when the character would break markup.",
+          "whenToUse": "When showing code samples that include < or when you need a character that conflicts with HTML syntax.",
+          "whenNotToUse": "Do not entity-encode ordinary letters and words.",
+          "useCases": [
+            {
+              "title": "Showing tags as text",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Use &lt;p&gt; for paragraphs &amp; &lt;a&gt; for links.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Writing raw < in the middle of a sentence and accidentally starting a tag."
+          ],
+          "beginnerTips": [
+            "Remember &amp; — a common bug is a bare & in URLs inside HTML."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "html-entities",
+          "title": "HTML entities",
+          "syntax": "&lt;div&gt; &amp; &copy;",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "structure",
+            "boilerplate"
+          ],
+          "level": "beginner",
+          "summary": "A standard page has doctype, html, head (metadata), and body (visible content).",
+          "description": "Almost every modern page follows the same skeleton: <!DOCTYPE html>, then <html>, which contains <head> and <body>. The head holds information about the page (title, character set, CSS links). The body holds what users see. Learning this skeleton once unlocks every tutorial you will read afterward.",
+          "whenToUse": "Start every new HTML file from this structure.",
+          "whenNotToUse": "Do not skip the head essentials (charset, title, viewport on real sites).",
+          "useCases": [
+            {
+              "title": "Full skeleton with landmark regions",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Structure Demo</title>\n</head>\n<body>\n  <header><h1>Page title</h1></header>\n  <main><p>Main content</p></main>\n  <footer><p>Footer</p></footer>\n</body>\n</html>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "Always set lang on <html>, e.g. lang=\"en\"."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "head-element",
+              "label": "<head>"
+            },
+            {
+              "section": "html",
+              "topic": "body-element",
+              "label": "<body>"
+            }
+          ],
+          "id": "document-structure",
+          "title": "Document structure",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "doctype"
+          ],
+          "level": "beginner",
+          "summary": "Tells the browser this document uses modern HTML standards mode.",
+          "description": "The doctype is the first line of an HTML5 document. It is not an element and does not close. Writing <!DOCTYPE html> puts the browser into standards mode so layout behaves predictably. Older doctypes existed for older HTML versions; you only need the short HTML5 form today.",
+          "whenToUse": "On every HTML page, as the first line.",
+          "whenNotToUse": "Never omit it on production pages.",
+          "useCases": [],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "It is case-insensitive, but the conventional form is uppercase DOCTYPE."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "doctype",
+          "title": "<!DOCTYPE html>",
+          "syntax": "<!DOCTYPE html>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "html"
+          ],
+          "level": "beginner",
+          "summary": "The root element that wraps the entire document.",
+          "description": "The <html> element is the root of the page. It usually contains exactly two children: <head> and <body>. The lang attribute declares the primary language of the page, which helps screen readers and search engines.",
+          "whenToUse": "Always — one per document.",
+          "whenNotToUse": "Do not nest <html> inside itself.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Content ultimately lives under &lt;html&gt; → &lt;body&gt;.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "Set lang correctly for accessibility."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "html-element",
+          "title": "<html>",
+          "syntax": "<html lang=\"en\">...</html>",
+          "attributes": [
+            {
+              "name": "lang",
+              "description": "Primary language code, such as en or es."
+            }
+          ]
+        },
+        {
+          "tags": [
+            "head",
+            "metadata"
+          ],
+          "level": "beginner",
+          "summary": "Contains metadata about the page — not the main visible content.",
+          "description": "The <head> holds machine-readable and browser configuration information: character encoding, title (shown in the tab), viewport settings, links to CSS, site icons, and social metadata. Users do not see head content as page body text (except the title in the browser chrome).",
+          "whenToUse": "For title, charset, CSS, scripts that should load early, and SEO/social tags.",
+          "whenNotToUse": "Do not put article paragraphs in the head.",
+          "useCases": [],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "advanced-html",
+              "topic": "title",
+              "label": "<title>"
+            },
+            {
+              "section": "advanced-html",
+              "topic": "viewport",
+              "label": "viewport"
+            }
+          ],
+          "id": "head-element",
+          "title": "<head>",
+          "syntax": "<head>\n  <meta charset=\"UTF-8\">\n  <title>Page Title</title>\n</head>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "body"
+          ],
+          "level": "beginner",
+          "summary": "Contains all visible page content.",
+          "description": "Everything the user is meant to see and interact with belongs in <body>: headings, paragraphs, images, navigation, forms, and so on. There should be one body per document. Scripts that need the DOM are often placed at the end of the body so elements exist before the script runs (modules and defer change this pattern).",
+          "whenToUse": "For all visible content.",
+          "whenNotToUse": "Do not duplicate <body> tags.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h1>Inside the body</h1><p>This is visible page content.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "advanced-html",
+              "topic": "main",
+              "label": "<main>"
+            }
+          ],
+          "id": "body-element",
+          "title": "<body>",
+          "attributes": []
+        }
+      ]
+    },
+    {
+      "id": "text",
+      "title": "Text",
+      "description": "Headings, paragraphs, emphasis, and other text-level elements.",
+      "topics": [
+        {
+          "tags": [
+            "headings",
+            "text",
+            "h1"
+          ],
+          "level": "beginner",
+          "summary": "Heading level 1 — the main page title.",
+          "description": "The <h1> element represents the primary heading of a page or a distinct view. It tells people and assistive technologies what the page is about. Use one main h1 for the page’s primary topic in most simple documents. Headings create an outline: h1 for the top title, h2 for major sections, h3 for subsections, and so on. Do not choose heading levels based only on visual size — use CSS to style them.",
+          "whenToUse": "For a rank-1 heading in your document outline.",
+          "whenNotToUse": "Do not use headings just to make text big or bold — use CSS for looks.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h1>Example H1 heading</h1>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Skipping levels randomly for style.",
+            "Using multiple unrelated h1s without a clear design reason."
+          ],
+          "beginnerTips": [
+            "Style headings with CSS; choose levels for meaning."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "p",
+              "label": "<p>"
+            }
+          ],
+          "id": "h1",
+          "title": "<h1>",
+          "syntax": "<h1>Heading text</h1>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "headings",
+            "text",
+            "h2"
+          ],
+          "level": "beginner",
+          "summary": "Heading level 2 — a subsection heading.",
+          "description": "The <h2> element is a heading at outline level 2. Use it for subsections under higher-level headings. Keep heading levels nested logically (do not jump from h2 to h5 without reason). Screen reader users often navigate by headings, so a clear outline is an accessibility feature.",
+          "whenToUse": "For a rank-2 heading in your document outline.",
+          "whenNotToUse": "Do not use headings just to make text big or bold — use CSS for looks.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h2>Example H2 heading</h2>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Skipping levels randomly for style.",
+            "Using multiple unrelated h1s without a clear design reason."
+          ],
+          "beginnerTips": [
+            "Style headings with CSS; choose levels for meaning."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "p",
+              "label": "<p>"
+            }
+          ],
+          "id": "h2",
+          "title": "<h2>",
+          "syntax": "<h2>Heading text</h2>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "headings",
+            "text",
+            "h3"
+          ],
+          "level": "beginner",
+          "summary": "Heading level 3 — a subsection heading.",
+          "description": "The <h3> element is a heading at outline level 3. Use it for subsections under higher-level headings. Keep heading levels nested logically (do not jump from h2 to h5 without reason). Screen reader users often navigate by headings, so a clear outline is an accessibility feature.",
+          "whenToUse": "For a rank-3 heading in your document outline.",
+          "whenNotToUse": "Do not use headings just to make text big or bold — use CSS for looks.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h3>Example H3 heading</h3>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Skipping levels randomly for style.",
+            "Using multiple unrelated h1s without a clear design reason."
+          ],
+          "beginnerTips": [
+            "Style headings with CSS; choose levels for meaning."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "p",
+              "label": "<p>"
+            }
+          ],
+          "id": "h3",
+          "title": "<h3>",
+          "syntax": "<h3>Heading text</h3>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "headings",
+            "text",
+            "h4"
+          ],
+          "level": "beginner",
+          "summary": "Heading level 4 — a subsection heading.",
+          "description": "The <h4> element is a heading at outline level 4. Use it for subsections under higher-level headings. Keep heading levels nested logically (do not jump from h2 to h5 without reason). Screen reader users often navigate by headings, so a clear outline is an accessibility feature.",
+          "whenToUse": "For a rank-4 heading in your document outline.",
+          "whenNotToUse": "Do not use headings just to make text big or bold — use CSS for looks.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h4>Example H4 heading</h4>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Skipping levels randomly for style.",
+            "Using multiple unrelated h1s without a clear design reason."
+          ],
+          "beginnerTips": [
+            "Style headings with CSS; choose levels for meaning."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "p",
+              "label": "<p>"
+            }
+          ],
+          "id": "h4",
+          "title": "<h4>",
+          "syntax": "<h4>Heading text</h4>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "headings",
+            "text",
+            "h5"
+          ],
+          "level": "beginner",
+          "summary": "Heading level 5 — a subsection heading.",
+          "description": "The <h5> element is a heading at outline level 5. Use it for subsections under higher-level headings. Keep heading levels nested logically (do not jump from h2 to h5 without reason). Screen reader users often navigate by headings, so a clear outline is an accessibility feature.",
+          "whenToUse": "For a rank-5 heading in your document outline.",
+          "whenNotToUse": "Do not use headings just to make text big or bold — use CSS for looks.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h5>Example H5 heading</h5>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Skipping levels randomly for style.",
+            "Using multiple unrelated h1s without a clear design reason."
+          ],
+          "beginnerTips": [
+            "Style headings with CSS; choose levels for meaning."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "p",
+              "label": "<p>"
+            }
+          ],
+          "id": "h5",
+          "title": "<h5>",
+          "syntax": "<h5>Heading text</h5>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "headings",
+            "text",
+            "h6"
+          ],
+          "level": "beginner",
+          "summary": "Heading level 6 — a subsection heading.",
+          "description": "The <h6> element is a heading at outline level 6. Use it for subsections under higher-level headings. Keep heading levels nested logically (do not jump from h2 to h5 without reason). Screen reader users often navigate by headings, so a clear outline is an accessibility feature.",
+          "whenToUse": "For a rank-6 heading in your document outline.",
+          "whenNotToUse": "Do not use headings just to make text big or bold — use CSS for looks.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<h6>Example H6 heading</h6>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Skipping levels randomly for style.",
+            "Using multiple unrelated h1s without a clear design reason."
+          ],
+          "beginnerTips": [
+            "Style headings with CSS; choose levels for meaning."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "p",
+              "label": "<p>"
+            }
+          ],
+          "id": "h6",
+          "title": "<h6>",
+          "syntax": "<h6>Heading text</h6>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "paragraph"
+          ],
+          "level": "beginner",
+          "summary": "Defines a paragraph of text — a block of related sentences.",
+          "description": "The <p> element marks a paragraph. Browsers typically show space above and below paragraphs. Put continuous prose in paragraphs rather than separating lines with many <br> tags. A paragraph is a block-level element: it starts on a new line and takes available width by default.",
+          "whenToUse": "For ordinary body text grouped into paragraphs.",
+          "whenNotToUse": "Do not wrap every single word or heading in <p>.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>First paragraph.</p>\n<p>Second paragraph — notice the separation.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Using <br><br> instead of new <p> elements."
+          ],
+          "beginnerTips": [
+            "One idea per paragraph keeps writing readable."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "p",
+          "title": "<p>",
+          "syntax": "<p>Your paragraph text goes here.</p>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "void"
+          ],
+          "level": "beginner",
+          "summary": "Inserts a line break without starting a new paragraph.",
+          "description": "<br> is a void element that forces a line break. Use it sparingly — for poetry line breaks, addresses, or rare cases where lines must break inside one paragraph. For separating blocks of text, prefer multiple <p> elements or CSS margins.",
+          "whenToUse": "Soft line breaks inside a single unit of text.",
+          "whenNotToUse": "Do not use stacks of <br> to create layout spacing.",
+          "useCases": [
+            {
+              "title": "Address lines",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>221B Baker Street<br>London<br>NW1 6XE</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Creating vertical layout with many <br> tags."
+          ],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "br",
+          "title": "<br>",
+          "syntax": "Line one<br>Line two",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "void"
+          ],
+          "level": "beginner",
+          "summary": "A thematic break between sections of content — often shown as a horizontal rule.",
+          "description": "The <hr> element represents a thematic break (topic shift). Browsers often draw a horizontal line, but the meaning is a separation of content, not “draw a line.” Style it with CSS if needed.",
+          "whenToUse": "When content truly shifts topic within a page.",
+          "whenNotToUse": "Do not use <hr> only as decorative styling if a border on an element is clearer.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Chapter one ends.</p><hr><p>Chapter two begins.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "hr",
+          "title": "<hr>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "semantics"
+          ],
+          "level": "beginner",
+          "summary": "Indicates strong importance, seriousness, or urgency — not just bold look.",
+          "description": "<strong> marks text as important. Browsers usually bold it, but the key is meaning: assistive technologies can announce emphasis of importance. Prefer <strong> over <b> when importance is the reason.",
+          "whenToUse": "Warnings, critical labels, truly important phrases.",
+          "whenNotToUse": "Do not wrap entire paragraphs in <strong> for styling.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p><strong>Warning:</strong> Save your work before continuing.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "b",
+              "label": "<b>"
+            }
+          ],
+          "id": "strong",
+          "title": "<strong>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Draws attention stylistically without necessarily implying importance.",
+          "description": "The <b> element makes text bold without the strong importance semantics of <strong>. Use it for keywords or summary words when you are not claiming urgency. When in doubt about importance, prefer <strong>.",
+          "whenToUse": "Stylistic offset without “this is critical” meaning.",
+          "whenNotToUse": "For actual warnings — use <strong>.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>The product name is <b>Northwind</b> in this sentence.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "b",
+          "title": "<b>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "semantics"
+          ],
+          "level": "beginner",
+          "summary": "Emphasizes stress in a sentence — usually rendered in italics.",
+          "description": "<em> represents stressed emphasis that can change the meaning of a sentence (“I was <em>going</em> to call”). Screen readers may change voice prosody. Prefer <em> over <i> when you mean spoken emphasis.",
+          "whenToUse": "Sentence stress and nuanced emphasis.",
+          "whenNotToUse": "For book titles or idiomatic italics without stress — consider <i> or <cite>.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Please <em>do</em> read the instructions carefully.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "i",
+              "label": "<i>"
+            }
+          ],
+          "id": "em",
+          "title": "<em>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Idiomatic offset text, such as a technical term or taxonomical name — often italic.",
+          "description": "<i> is for text that is set off from normal prose for reason other than strong stress — for example a foreign phrase or a thought. It usually looks italic. For spoken emphasis, use <em>.",
+          "whenToUse": "Alternate voice/mood or idiomatic italics.",
+          "whenNotToUse": "For importance — use <strong> or <em> as appropriate.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>The ship was called <i>Wanderer</i>.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "i",
+          "title": "<i>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Annotates non-textual underlining (e.g. spelling error highlights) — avoid for links.",
+          "description": "Underlining on the web usually signals a link. The <u> element exists for specific annotation cases, but underlining ordinary text confuses users. Prefer CSS for design underlines, and reserve underlines for links in body content.",
+          "whenToUse": "Rare annotation cases defined by the HTML spec.",
+          "whenNotToUse": "Do not underline paragraphs for decoration; do not fake links.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Misspelled word example: <u>recieve</u></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Underlining non-links so they look clickable."
+          ],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "u",
+          "title": "<u>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Marks content that is no longer accurate or relevant — shown with a strikethrough.",
+          "description": "<s> represents things that are outdated or no longer correct, such as an old price. It is not for indicating document edits (there are other elements for editorial insertion/deletion in some contexts). Browsers typically strikethrough the text.",
+          "whenToUse": "No-longer-relevant text that you still want visible.",
+          "whenNotToUse": "Do not use it only for decoration.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Price: <s>$50</s> <strong>$35</strong></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "s",
+          "title": "<s>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Side comments such as fine print — often rendered smaller.",
+          "description": "<small> represents side remarks like copyright lines or legal fine print. It is semantic “small print,” not a generic “make text tiny” tool — though browsers often shrink it. Use CSS for pure visual size changes in body copy.",
+          "whenToUse": "Fine print and secondary legal/copyright notes.",
+          "whenNotToUse": "As your only way to create a visual hierarchy for main content.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Buy now.</p><p><small>Offer ends Friday. Terms apply.</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "small",
+          "title": "<small>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Highlights text for reference, like search result highlighting.",
+          "description": "<mark> means “this text is marked or highlighted for relevance in the current context,” such as matching a search term. Browsers often use a yellow background.",
+          "whenToUse": "Search hits or temporary highlights for reference.",
+          "whenNotToUse": "Do not mark entire pages.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Results for \"flex\": CSS <mark>flex</mark>box is covered in the CSS section.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "mark",
+          "title": "<mark>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Subscript text, sitting slightly below the baseline.",
+          "description": "<sub> renders subscript, commonly used in chemical formulas (H<sub>2</sub>O) or footnotes markers.",
+          "whenToUse": "True subscript meaning.",
+          "whenNotToUse": "For general layout positioning — use CSS.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Water is H<sub>2</sub>O.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "sub",
+          "title": "<sub>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Superscript text, sitting slightly above the baseline.",
+          "description": "<sup> is for exponents, ordinal indicators in some locales, and footnote references.",
+          "whenToUse": "Exponents and similar superscript needs.",
+          "whenNotToUse": "For raising text as decoration.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>E = mc<sup>2</sup></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "sup",
+          "title": "<sup>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "code"
+          ],
+          "level": "beginner",
+          "summary": "Marks a fragment of computer code inline.",
+          "description": "Use <code> for short code snippets inside a sentence, like function names or tag names. For multi-line code blocks, wrap <code> in <pre> (or use <pre><code>…</code></pre>).",
+          "whenToUse": "Inline code fragments.",
+          "whenNotToUse": "For non-code italics or emphasis.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Use the <code>querySelector</code> method to find an element.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "pre",
+              "label": "<pre>"
+            }
+          ],
+          "id": "code",
+          "title": "<code>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "code"
+          ],
+          "level": "beginner",
+          "summary": "Preformatted text that preserves spaces and line breaks.",
+          "description": "<pre> keeps whitespace as written, using a monospace font by default. It is ideal for code blocks and ASCII diagrams. Combine with <code> for code semantics.",
+          "whenToUse": "Multi-line code or text where spacing matters.",
+          "whenNotToUse": "For normal paragraphs.",
+          "useCases": [
+            {
+              "title": "Code block",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<pre><code>function hello() {\n  return \"Hi\";\n}</code></pre>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "pre",
+          "title": "<pre>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "quote"
+          ],
+          "level": "beginner",
+          "summary": "A long quotation from another source, usually displayed as a block.",
+          "description": "<blockquote> is for extended quotes. Use the cite attribute for a source URL when appropriate, and optionally a <footer> or <cite> inside for attribution. For short inline quotes, use <q>.",
+          "whenToUse": "Multi-sentence quotations set apart from your own prose.",
+          "whenNotToUse": "For indenting ordinary text — use CSS.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<blockquote>\n  <p>Programs must be written for people to read.</p>\n</blockquote>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "q",
+              "label": "<q>"
+            }
+          ],
+          "id": "blockquote",
+          "title": "<blockquote>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "text",
+            "quote"
+          ],
+          "level": "beginner",
+          "summary": "A short inline quotation; browsers often add quote marks automatically.",
+          "description": "The <q> element marks a short quotation inside a paragraph. Browsers typically insert locale-appropriate quotation marks, so you usually should not type \" manually around it.",
+          "whenToUse": "Short quotes inside running text.",
+          "whenNotToUse": "For long excerpts — use <blockquote>.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>She said <q>ship it</q> and smiled.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "q",
+          "title": "<q>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "semantics",
+            "text"
+          ],
+          "level": "beginner",
+          "summary": "Choose elements for meaning; use CSS for appearance.",
+          "description": "Semantic elements describe what content is (heading, strong importance, quote). Visual-only choices describe how it looks (big, blue, indented). HTML’s job is meaning and structure. CSS’s job is look and layout. That separation helps accessibility, redesigns, and maintenance. Example: do not pick <h3> because it “looks like the right size” — pick the correct rank, then style it.",
+          "whenToUse": "Always prefer meaning-first decisions when an element exists for that meaning.",
+          "whenNotToUse": "Do not ignore CSS — visuals still matter; just keep them in stylesheets.",
+          "useCases": [],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "Ask: “What is this?” before “How should it look?”",
+            "If you only need a look, CSS is usually the right tool."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "strong",
+              "label": "<strong>"
+            },
+            {
+              "section": "css",
+              "topic": "what-is-css",
+              "label": "What CSS is"
+            }
+          ],
+          "id": "semantic-vs-visual",
+          "title": "Semantic vs visual formatting",
+          "attributes": []
+        }
+      ]
+    },
+    {
+      "id": "links",
+      "title": "Links",
+      "description": "Connect pages, sections, files, and email with the anchor element.",
+      "topics": [
+        {
+          "tags": [
+            "links",
+            "a"
+          ],
+          "level": "beginner",
+          "summary": "The anchor element creates a hyperlink to another page, file, or location.",
+          "description": "The <a> element (anchor) is how users navigate the web. With an href attribute, it becomes a link. Without href, it is a placeholder anchor. Link text should describe the destination (“View pricing”), not “click here.” Links are not buttons: links navigate; buttons perform actions on the current page.",
+          "whenToUse": "When navigation to a URL or page section is the goal.",
+          "whenNotToUse": "For actions like “Submit” or “Open dialog” — use <button>.",
+          "useCases": [
+            {
+              "title": "Basic link",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"https://example.com\">Visit Example</a>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "Fragment style text",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"#forms\">Jump to forms section id (same page pattern)</a>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Using <a> without href for buttons.",
+            "Vague link text like “click here”."
+          ],
+          "beginnerTips": [
+            "Write link text that makes sense out of context."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "href",
+              "label": "href"
+            },
+            {
+              "section": "html",
+              "topic": "a-vs-link",
+              "label": "<a> vs <link>"
+            }
+          ],
+          "id": "a",
+          "title": "<a>",
+          "syntax": "<a href=\"https://example.com\">Example</a>",
+          "attributes": [
+            {
+              "name": "href",
+              "description": "Destination URL or fragment."
+            },
+            {
+              "name": "target",
+              "description": "Where to open the link, e.g. _blank for a new tab."
+            },
+            {
+              "name": "rel",
+              "description": "Relationship to the destination; use noopener with target=_blank."
+            }
+          ]
+        },
+        {
+          "tags": [
+            "links",
+            "attributes"
+          ],
+          "level": "beginner",
+          "summary": "The href attribute sets the link destination.",
+          "description": "href stands for hypertext reference. It can be an absolute URL (https://…), a relative path (about.html), a same-page fragment (#section-id), or a special scheme like mailto:. Empty or missing href changes how the anchor behaves.",
+          "whenToUse": "On every real navigation link.",
+          "whenNotToUse": "Omit only for intentional placeholder anchors.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"https://developer.mozilla.org/\">MDN Web Docs</a>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "href",
+          "title": "href",
+          "syntax": "href=\"about.html\"\nhref=\"https://example.com\"\nhref=\"#section\"",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "links",
+            "urls"
+          ],
+          "level": "beginner",
+          "summary": "Paths relative to the current page or site root.",
+          "description": "Relative URLs point within your site without writing the full domain. about.html looks in the same folder. ./about.html is explicit same-folder. ../ moves up a folder. /about.html (leading slash) starts from the site root. Relative links keep sites portable between local folders and GitHub Pages.",
+          "whenToUse": "Linking between pages and assets in your own project.",
+          "whenNotToUse": "When linking to another website — use absolute URLs.",
+          "useCases": [
+            {
+              "title": "Relative path pattern",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p><a href=\"./style.css\">This would link to a CSS file path (example)</a></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Broken paths after moving files into new folders."
+          ],
+          "beginnerTips": [
+            "Keep a consistent folder structure and update links when you move files."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "relative-urls",
+          "title": "Relative URLs",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "links",
+            "urls"
+          ],
+          "level": "beginner",
+          "summary": "Full addresses including protocol and domain.",
+          "description": "Absolute URLs include the scheme and host, like https://example.com/page. Use them for external sites. Prefer https for secure pages.",
+          "whenToUse": "External destinations.",
+          "whenNotToUse": "Unnecessary for every internal page link.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"https://example.com/path/page.html\">Absolute URL example</a>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "absolute-urls",
+          "title": "Absolute URLs",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "links"
+          ],
+          "level": "beginner",
+          "summary": "Linking from one HTML page to another in your site.",
+          "description": "Multi-page sites connect documents with relative href values. Navigation menus are lists of page links. Keep file names clear (about.html, contact.html).",
+          "whenToUse": "Any multi-page website.",
+          "whenNotToUse": "Not applicable inside a single-page section jump — use fragments.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<nav>\n  <a href=\"index.html\">Home</a> |\n  <a href=\"about.html\">About</a>\n</nav>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "page-links",
+          "title": "Page links",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "links",
+            "fragments"
+          ],
+          "level": "beginner",
+          "summary": "Jump to an element with an id using #fragment links.",
+          "description": "If an element has id=\"pricing\", then href=\"#pricing\" scrolls to it on the same page. href=\"other.html#pricing\" opens another page at that section. IDs must be unique on the page.",
+          "whenToUse": "Tables of contents and in-page navigation.",
+          "whenNotToUse": "Do not duplicate ids.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"#demo-target\">Jump down</a>\n<p>…</p>\n<h2 id=\"demo-target\">Demo target</h2>\n<p>You landed here.</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "advanced-html",
+              "topic": "id-attribute",
+              "label": "id"
+            }
+          ],
+          "id": "section-links",
+          "title": "Section links",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "links",
+            "mailto"
+          ],
+          "level": "beginner",
+          "summary": "mailto: links open the user’s email app with a prefilled address.",
+          "description": "Use href=\"mailto:name@example.com\" to start an email. You can add query parameters like subject. Remember that publishing an address can increase spam.",
+          "whenToUse": "Contact links when email is appropriate.",
+          "whenNotToUse": "As the only contact method if you need spam protection forms.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"mailto:hello@example.com\">Email us</a>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "email-links",
+          "title": "Email links",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "links",
+            "security"
+          ],
+          "level": "beginner",
+          "summary": "Open links in new tabs safely with target and rel.",
+          "description": "target=\"_blank\" opens a new browsing context (often a new tab). Always pair it with rel=\"noopener noreferrer\" to avoid security/performance issues where the new page can touch window.opener. Do not open every link in a new tab — users often prefer control.",
+          "whenToUse": "External links when a new tab is intentional and helpful.",
+          "whenNotToUse": "On every internal navigation link.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">Open example.com in a new tab</a>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Using target=_blank without rel=\"noopener\"."
+          ],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "target-rel",
+          "title": "target and rel",
+          "syntax": "<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">External</a>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "links",
+            "head"
+          ],
+          "level": "beginner",
+          "summary": "<a> is for users to click; <link> is for the document to reference resources.",
+          "description": "Beginners confuse <a> and <link>. <a href> creates a navigational hyperlink in the page body. <link> lives in <head> and connects resources like stylesheets: <link rel=\"stylesheet\" href=\"style.css\">. Users do not click <link>. Remember: anchors for people, link tags for documents.",
+          "whenToUse": "Use <a> for navigation; use <link> for CSS and similar resources.",
+          "whenNotToUse": "Never use <link> as a clickable body link.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<p>Visible user link: <a href=\"https://example.com\">Example</a></p>\n<p>Stylesheet references use the <code>&lt;link&gt;</code> tag in the head (not shown as a clickable body control).</p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "If a human clicks it, it is probably <a>, not <link>."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "a-vs-link",
+          "title": "<a> vs <link>",
+          "attributes": []
+        }
+      ]
+    },
+    {
+      "id": "images",
+      "title": "Images",
+      "description": "Add pictures with accessible alternatives and sensible sizing.",
+      "topics": [
+        {
+          "tags": [
+            "images"
+          ],
+          "level": "beginner",
+          "summary": "Embeds an image into the page. It is a void element.",
+          "description": "The <img> element embeds an image. It needs src (where the file is) and should almost always include alt (text alternative). Images are replaced elements: they display the picture rather than wrapping text content. Large images should be compressed for performance.",
+          "whenToUse": "Photos, diagrams, icons that are meaningful content.",
+          "whenNotToUse": "For purely decorative lines — CSS is often better; decorative images need empty alt.",
+          "useCases": [
+            {
+              "title": "Embedded image",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%20role%3D%22img%22%20aria-label%3D%22Blue%20placeholder%22%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%3ESample%20image%3C%2Ftext%3E%3C%2Fsvg%3E\" alt=\"Blue rectangle labeled Sample image\" width=\"240\" height=\"120\">"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Omitting alt.",
+            "Using huge uncompressed photos."
+          ],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "alt",
+              "label": "alt"
+            }
+          ],
+          "id": "img",
+          "title": "<img>",
+          "syntax": "<img src=\"photo.jpg\" alt=\"Description of the photo\">",
+          "attributes": [
+            {
+              "name": "src",
+              "description": "Image URL or path."
+            },
+            {
+              "name": "alt",
+              "description": "Text alternative for accessibility and failed loads."
+            },
+            {
+              "name": "width",
+              "description": "Optional width hint in pixels."
+            },
+            {
+              "name": "height",
+              "description": "Optional height hint in pixels."
+            }
+          ]
+        },
+        {
+          "tags": [
+            "images",
+            "attributes"
+          ],
+          "level": "beginner",
+          "summary": "The source path or URL of the image file.",
+          "description": "src tells the browser where to download the image. Use relative paths for your own assets (images/photo.jpg) or absolute URLs for external files. If src is wrong, the image breaks and alt text becomes especially important.",
+          "whenToUse": "On every <img>.",
+          "whenNotToUse": "—",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%20role%3D%22img%22%20aria-label%3D%22Blue%20placeholder%22%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%3ESample%20image%3C%2Ftext%3E%3C%2Fsvg%3E\" alt=\"Demo via data URL\">"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "src",
+          "title": "src",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "images",
+            "a11y"
+          ],
+          "level": "beginner",
+          "summary": "Text alternative that describes the image’s purpose or content.",
+          "description": "alt is not optional for meaningful images. Screen readers read it aloud. If the image fails to load, browsers may show alt. Descriptive alt explains the content or function (“Search” for a magnifying-glass icon button image). Decorative images should use alt=\"\" so assistive tech can skip them. Do not stuff keywords for SEO spam.",
+          "whenToUse": "Always decide on alt: describe or intentionally empty.",
+          "whenNotToUse": "Do not write “image of…” fluff if it adds no information.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%20role%3D%22img%22%20aria-label%3D%22Blue%20placeholder%22%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%3ESample%20image%3C%2Ftext%3E%3C%2Fsvg%3E\" alt=\"Blue banner that says Sample image\">"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Missing alt attribute entirely.",
+            "Repeating nearby caption text awkwardly."
+          ],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "alt",
+          "title": "alt",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "images"
+          ],
+          "level": "beginner",
+          "summary": "Attributes that hint at intrinsic dimensions and help reduce layout jump.",
+          "description": "width and height attributes (unitless pixels) help the browser reserve space before the image loads, reducing layout shift. They do not replace responsive CSS. For responsive images, set width/height to intrinsic ratio and use CSS like max-width: 100%; height: auto.",
+          "whenToUse": "When you know intrinsic dimensions.",
+          "whenNotToUse": "Do not distort images with mismatched forced sizes without care.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%20role%3D%22img%22%20aria-label%3D%22Blue%20placeholder%22%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%3ESample%20image%3C%2Ftext%3E%3C%2Fsvg%3E\" alt=\"Fixed width demo\" width=\"160\" height=\"80\">"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "width-height",
+          "title": "width and height",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "images",
+            "paths"
+          ],
+          "level": "beginner",
+          "summary": "Organize image files and link them with correct relative paths.",
+          "description": "A common pattern is an images/ folder next to your HTML. From index.html, src=\"images/logo.png\" works. From a subfolder page, you may need ../images/logo.png. Consistency prevents broken images after publishing to GitHub Pages.",
+          "whenToUse": "Any project with local image assets.",
+          "whenNotToUse": "—",
+          "useCases": [],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "Use lowercase names and hyphens; avoid spaces in filenames."
+          ],
+          "advancedNotes": [],
+          "related": [],
+          "id": "image-paths",
+          "title": "Image paths",
+          "attributes": [],
+          "visual": "my-website/\n├── index.html\n└── images/\n    ├── logo.png\n    └── hero.jpg"
+        },
+        {
+          "tags": [
+            "images",
+            "responsive"
+          ],
+          "level": "beginner",
+          "summary": "Make images scale on small screens with CSS and careful src choices.",
+          "description": "At minimum, use CSS so images never overflow: img { max-width: 100%; height: auto; }. Advanced responsive techniques include srcset and <picture> for different resolutions and art direction. Start with the CSS rule, then learn srcset as you optimize.",
+          "whenToUse": "All modern sites viewed on phones.",
+          "whenNotToUse": "Skipping alt while focusing only on sizing.",
+          "useCases": [
+            {
+              "title": "Fluid image",
+              "explanation": "The image scales down with the container.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<img class=\"fluid\" src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%20role%3D%22img%22%20aria-label%3D%22Blue%20placeholder%22%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%3ESample%20image%3C%2Ftext%3E%3C%2Fsvg%3E\" alt=\"Responsive sample\">"
+                },
+                {
+                  "language": "css",
+                  "code": ".fluid { max-width: 100%; height: auto; display: block; }"
+                }
+              ],
+              "render": true
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "responsive-images",
+          "title": "Responsive images",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "images",
+            "semantics"
+          ],
+          "level": "beginner",
+          "summary": "Self-contained content like an image with an optional caption.",
+          "description": "<figure> groups media with its caption as a single unit that can move as a block relative to the main flow. Pair with <figcaption>.",
+          "whenToUse": "Images, diagrams, or code samples that need a caption.",
+          "whenNotToUse": "For every decorative icon.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<figure>\n  <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%20role%3D%22img%22%20aria-label%3D%22Blue%20placeholder%22%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%3ESample%20image%3C%2Ftext%3E%3C%2Fsvg%3E\" alt=\"Chart placeholder\">\n  <figcaption>Figure 1: Sample chart placeholder.</figcaption>\n</figure>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "figcaption",
+              "label": "<figcaption>"
+            }
+          ],
+          "id": "figure",
+          "title": "<figure>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "images"
+          ],
+          "level": "beginner",
+          "summary": "Caption describing a figure.",
+          "description": "Place <figcaption> as the first or last child of <figure>. It captions the figure content for everyone, including sighted users — different from alt, which targets the image alternative text.",
+          "whenToUse": "When a visible caption helps.",
+          "whenNotToUse": "As a replacement for alt on the image.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<figure>\n  <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%20role%3D%22img%22%20aria-label%3D%22Blue%20placeholder%22%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%3ESample%20image%3C%2Ftext%3E%3C%2Fsvg%3E\" alt=\"Blue sample\">\n  <figcaption>A caption visible on the page.</figcaption>\n</figure>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "figcaption",
+          "title": "<figcaption>",
+          "attributes": []
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "description": "Ordered, unordered, and description lists.",
+      "topics": [
+        {
+          "tags": [
+            "lists"
+          ],
+          "level": "beginner",
+          "summary": "Unordered list — items share a relationship without ranking.",
+          "description": "<ul> creates a bulleted list by default. Each item must be an <li>. Use unordered lists for navigation menus and collections where order is not essential.",
+          "whenToUse": "Groups of peers without required sequence.",
+          "whenNotToUse": "Step-by-step instructions — prefer <ol>.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<ul>\n  <li>HTML</li>\n  <li>CSS</li>\n  <li>JavaScript</li>\n</ul>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "ul",
+          "title": "<ul>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "lists"
+          ],
+          "level": "beginner",
+          "summary": "Ordered list — sequence matters.",
+          "description": "<ol> numbers items by default. Use it for procedures, rankings, and ranked results. Attributes like start and type exist but CSS is preferred for styling.",
+          "whenToUse": "Steps and ranked sequences.",
+          "whenNotToUse": "When order truly does not matter.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<ol>\n  <li>Create the file</li>\n  <li>Add HTML</li>\n  <li>Open in a browser</li>\n</ol>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "ol",
+          "title": "<ol>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "lists"
+          ],
+          "level": "beginner",
+          "summary": "A single list item inside ul or ol.",
+          "description": "Every <ul> or <ol> child should be <li>. An <li> can contain paragraphs, links, and nested lists.",
+          "whenToUse": "Each entry in a list.",
+          "whenNotToUse": "Outside of lists.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<ul><li>Only valid inside lists</li></ul>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "li",
+          "title": "<li>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "lists"
+          ],
+          "level": "beginner",
+          "summary": "Description list for term/definition groups.",
+          "description": "<dl> groups terms (<dt>) and descriptions (<dd>). Useful for glossaries, metadata pairs, and FAQs.",
+          "whenToUse": "Name/value or term/definition content.",
+          "whenNotToUse": "Simple bullet lists — use ul.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<dl>\n  <dt>HTML</dt>\n  <dd>Structure of a web page.</dd>\n  <dt>CSS</dt>\n  <dd>Presentation and layout.</dd>\n</dl>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "dl",
+          "title": "<dl>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "lists"
+          ],
+          "level": "beginner",
+          "summary": "The term being defined in a description list.",
+          "description": "<dt> is the term; follow it with one or more <dd> descriptions.",
+          "whenToUse": "Inside <dl>.",
+          "whenNotToUse": "Alone as a heading substitute.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<dl><dt>API</dt><dd>Application Programming Interface.</dd></dl>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "dt",
+          "title": "<dt>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "lists"
+          ],
+          "level": "beginner",
+          "summary": "The description or definition for a preceding term.",
+          "description": "<dd> provides the details for a <dt>. Multiple <dd> elements can follow one term.",
+          "whenToUse": "Inside <dl> after <dt>.",
+          "whenNotToUse": "As a generic indented paragraph outside dl.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<dl><dt>DOM</dt><dd>Document Object Model — the browser’s tree of the page.</dd></dl>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "dd",
+          "title": "<dd>",
+          "attributes": []
+        }
+      ]
+    },
+    {
+      "id": "tables",
+      "title": "Tables",
+      "description": "Tabular data — not page layout.",
+      "topics": [
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "Container for tabular data arranged in rows and columns.",
+          "description": "Use <table> for genuine data grids (schedules, comparisons, pricing matrices). Do not use tables to position a whole page layout — that is a job for CSS. Accessible tables use headers (<th>) and captions.",
+          "whenToUse": "When data is inherently tabular.",
+          "whenNotToUse": "For page layout columns.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table>\n  <caption>Office hours</caption>\n  <thead><tr><th>Day</th><th>Hours</th></tr></thead>\n  <tbody>\n    <tr><td>Mon</td><td>9–5</td></tr>\n    <tr><td>Tue</td><td>10–6</td></tr>\n  </tbody>\n</table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "table",
+          "title": "<table>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "A table row.",
+          "description": "Each <tr> holds cells (<td> or <th>) that make one row.",
+          "whenToUse": "Every row in a table.",
+          "whenNotToUse": "Outside tables.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><tr><td>A</td><td>B</td></tr></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "tr",
+          "title": "<tr>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "A standard data cell.",
+          "description": "<td> holds a data value. Prefer <th> for header cells.",
+          "whenToUse": "Body data cells.",
+          "whenNotToUse": "For column/row titles — use th.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><tr><td>42</td></tr></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "td",
+          "title": "<td>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables",
+            "a11y"
+          ],
+          "level": "beginner",
+          "summary": "A header cell for a column or row.",
+          "description": "<th> labels data. Use scope=\"col\" or scope=\"row\" when it helps clarify. Screen readers announce headers with cells.",
+          "whenToUse": "Column and row titles.",
+          "whenNotToUse": "For styling bold cells that are not headers.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><tr><th scope=\"col\">Name</th><th scope=\"col\">Score</th></tr><tr><td>Ada</td><td>98</td></tr></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "th",
+          "title": "<th>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "Groups header rows.",
+          "description": "<thead> wraps header rows so browsers and assistive tech understand structure. Often paired with tbody and tfoot.",
+          "whenToUse": "Tables with a clear header section.",
+          "whenNotToUse": "Required for tiny one-row demos, but recommended in real tables.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><thead><tr><th>Item</th></tr></thead><tbody><tr><td>Pens</td></tr></tbody></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "thead",
+          "title": "<thead>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "Groups the main data rows.",
+          "description": "A table can have one or more <tbody> sections. It organizes body rows separately from head/foot.",
+          "whenToUse": "Most data tables.",
+          "whenNotToUse": "—",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><tbody><tr><td>Data row</td></tr></tbody></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "tbody",
+          "title": "<tbody>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "Groups footer rows such as totals.",
+          "description": "<tfoot> contains summary rows. In HTML5 it can appear before or after tbody in source order; browsers still render it appropriately.",
+          "whenToUse": "Totals and summaries.",
+          "whenNotToUse": "Decorative last rows that are not footers.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table>\n  <thead><tr><th>Item</th><th>Cost</th></tr></thead>\n  <tbody><tr><td>Book</td><td>$10</td></tr></tbody>\n  <tfoot><tr><th scope=\"row\">Total</th><td>$10</td></tr></tfoot>\n</table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "tfoot",
+          "title": "<tfoot>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables",
+            "a11y"
+          ],
+          "level": "beginner",
+          "summary": "A title for the whole table.",
+          "description": "Place <caption> as the first child of <table>. It names the table for everyone.",
+          "whenToUse": "Whenever a table needs a visible title.",
+          "whenNotToUse": "As a replacement for page headings outside the table.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><caption>Team scores</caption><tr><td>42</td></tr></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "caption",
+          "title": "<caption>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "Makes a cell span multiple columns.",
+          "description": "colspan=\"2\" stretches a cell across two columns. Keep the math of columns consistent across rows.",
+          "whenToUse": "Merged header or summary cells.",
+          "whenNotToUse": "As a layout hack for non-tabular content.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><tr><td colspan=\"2\">Wide cell</td></tr><tr><td>A</td><td>B</td></tr></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "colspan",
+          "title": "colspan",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables"
+          ],
+          "level": "beginner",
+          "summary": "Makes a cell span multiple rows.",
+          "description": "rowspan=\"2\" stretches a cell across two rows. Use carefully — complex spans hurt accessibility.",
+          "whenToUse": "When a category label applies to multiple rows.",
+          "whenNotToUse": "Deeply nested spanning layouts.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<table><tr><td rowspan=\"2\">Side</td><td>Top</td></tr><tr><td>Bottom</td></tr></table>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "rowspan",
+          "title": "rowspan",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "tables",
+            "best-practices"
+          ],
+          "level": "beginner",
+          "summary": "Tables are for data relationships — not page scaffolding.",
+          "description": "Appropriate: financial reports, comparison charts, timetables. Inappropriate: placing a sidebar next to content using table cells, or building an entire homepage grid with nested tables. CSS Flexbox and Grid exist for layout and are more accessible and responsive.",
+          "whenToUse": "True rows-and-columns data.",
+          "whenNotToUse": "Any full-page layout task.",
+          "useCases": [],
+          "commonMistakes": [],
+          "beginnerTips": [
+            "If you are not displaying a dataset, you probably do not need a table."
+          ],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "css",
+              "topic": "display-flex",
+              "label": "Flexbox"
+            },
+            {
+              "section": "css",
+              "topic": "display-grid",
+              "label": "Grid"
+            }
+          ],
+          "id": "table-uses",
+          "title": "Appropriate table uses",
+          "attributes": []
+        }
+      ]
+    },
+    {
+      "id": "forms",
+      "title": "Forms",
+      "description": "Collect user input with form controls and labels.",
+      "topics": [
+        {
+          "tags": [
+            "forms"
+          ],
+          "level": "beginner",
+          "summary": "A container that groups controls that can be submitted together.",
+          "description": "The <form> element groups inputs, labels, and buttons. Attributes like action (where to send data) and method (get or post) matter for real submissions. For front-end learning demos, you may omit a real server and use JavaScript to handle submit.",
+          "whenToUse": "Any time you collect related user input.",
+          "whenNotToUse": "For a single button that is not submitting data — a lone <button> may suffice.",
+          "useCases": [
+            {
+              "title": "Minimal form",
+              "explanation": "This demo prevents a real network submit and shows an alert instead.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<form onsubmit=\"event.preventDefault(); alert('Submitted (demo)');\">\n  <label>Name <input name=\"name\" required></label>\n  <button type=\"submit\">Send</button>\n</form>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "form",
+          "title": "<form>",
+          "attributes": [
+            {
+              "name": "action",
+              "description": "URL that receives the submission."
+            },
+            {
+              "name": "method",
+              "description": "HTTP method: get or post."
+            }
+          ]
+        },
+        {
+          "tags": [
+            "forms"
+          ],
+          "level": "beginner",
+          "summary": "The workhorse form control; behavior changes with the type attribute.",
+          "description": "<input> is void and highly versatile. type=\"text\" is the default. Combined with name, value, placeholder, and validation attributes, it covers most form needs. Always pair inputs with <label>.",
+          "whenToUse": "Most single-value fields.",
+          "whenNotToUse": "For multi-line text — use textarea; for options list — use select.",
+          "useCases": [
+            {
+              "title": "Email input",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>Email <input type=\"email\" name=\"email\" placeholder=\"you@example.com\"></label>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [
+            {
+              "section": "html",
+              "topic": "label",
+              "label": "<label>"
+            }
+          ],
+          "id": "input",
+          "title": "<input>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms",
+            "a11y"
+          ],
+          "level": "beginner",
+          "summary": "Captions a form control and improves clicking/tapping and accessibility.",
+          "description": "Labels tell users what a field means. Associate them by wrapping the control or using for=\"id\" matching the control’s id. Clicking the label focuses the control. Screen readers announce labels — placeholders are not a substitute.",
+          "whenToUse": "Every meaningful input.",
+          "whenNotToUse": "Do not rely on placeholder alone as the only label.",
+          "useCases": [
+            {
+              "title": "Explicit for/id pairing",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label for=\"user\">Username</label>\n<input id=\"user\" name=\"user\">"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "label",
+          "title": "<label>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms",
+            "buttons"
+          ],
+          "level": "beginner",
+          "summary": "A clickable button that can submit, reset, or run custom actions.",
+          "description": "Inside a form, <button type=\"submit\"> submits. type=\"button\" does nothing by itself until JavaScript listens for clicks — perfect for UI actions. Prefer <button> over <a> for actions, and prefer <a> for navigation. Button content can include text and elements; it is richer than <input type=\"submit\">.",
+          "whenToUse": "Actions and form submission.",
+          "whenNotToUse": "Navigating to another page — use a link.",
+          "useCases": [
+            {
+              "title": "JavaScript alert button",
+              "explanation": "The rendered button is interactive.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<button type=\"button\" onclick=\"alert('Hello!')\">Click Me</button>"
+                }
+              ],
+              "render": true,
+              "resultNote": "Clicking runs alert inside the sandbox."
+            }
+          ],
+          "commonMistakes": [
+            "Using a link styled as a button for form submit without care.",
+            "Forgetting type=\"button\" so it accidentally submits a form."
+          ],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "button",
+          "title": "<button>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms"
+          ],
+          "level": "beginner",
+          "summary": "Multi-line text input.",
+          "description": "Use <textarea> for comments and messages. Content goes between opening and closing tags (not a value attribute). rows and cols are hints; CSS usually sizes it better.",
+          "whenToUse": "Longer free-text responses.",
+          "whenNotToUse": "Single-line values — use input.",
+          "useCases": [
+            {
+              "title": "",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>Message\n<textarea name=\"msg\" rows=\"4\">Hello</textarea>\n</label>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "textarea",
+          "title": "<textarea>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms"
+          ],
+          "level": "beginner",
+          "summary": "A dropdown (or listbox) of options.",
+          "description": "<select> contains <option> elements. The chosen option’s value is submitted under the select’s name. Use multiple for multi-select when appropriate.",
+          "whenToUse": "Choosing one (or more) options from a known list.",
+          "whenNotToUse": "Very long lists without search — consider other UI patterns.",
+          "useCases": [
+            {
+              "title": "",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>Size\n  <select name=\"size\">\n    <option value=\"s\">Small</option>\n    <option value=\"m\" selected>Medium</option>\n    <option value=\"l\">Large</option>\n  </select>\n</label>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "select",
+          "title": "<select>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms"
+          ],
+          "level": "beginner",
+          "summary": "One choice inside a select (or datalist).",
+          "description": "Each <option> can have a value attribute. If omitted, the text content is used as the value. selected marks the default.",
+          "whenToUse": "Inside select.",
+          "whenNotToUse": "As a standalone control.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<select><option>One</option><option selected>Two</option></select>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "option",
+          "title": "<option>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms",
+            "a11y"
+          ],
+          "level": "beginner",
+          "summary": "Groups related controls, especially radio sets.",
+          "description": "<fieldset> visually and semantically groups controls. Pair with <legend> as the group label. Excellent for radio buttons that share a question.",
+          "whenToUse": "Related controls under one question or category.",
+          "whenNotToUse": "Unnecessary wrapping of a single simple field.",
+          "useCases": [
+            {
+              "title": "",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<fieldset>\n  <legend>Shipping</legend>\n  <label><input type=\"radio\" name=\"ship\" value=\"std\" checked> Standard</label>\n  <label><input type=\"radio\" name=\"ship\" value=\"exp\"> Express</label>\n</fieldset>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "fieldset",
+          "title": "<fieldset>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms"
+          ],
+          "level": "beginner",
+          "summary": "Caption for a fieldset.",
+          "description": "The <legend> names the group. Place it as the first child of fieldset.",
+          "whenToUse": "With fieldset groups.",
+          "whenNotToUse": "As a page heading outside forms.",
+          "useCases": [
+            {
+              "title": "Rendered example",
+              "explanation": "",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<fieldset><legend>Contact</legend><label>Email <input type=\"email\"></label></fieldset>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "legend",
+          "title": "<legend>",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms",
+            "input"
+          ],
+          "level": "beginner",
+          "summary": "The type attribute changes how an input looks and behaves.",
+          "description": "type selects the control kind. Mobile browsers often show specialized keyboards (email, number). Some types provide built-in validation. Support varies slightly by browser, but the common types below are widely usable.",
+          "whenToUse": "Pick the type that matches the data you need.",
+          "whenNotToUse": "Do not use text for everything when a better type exists.",
+          "useCases": [
+            {
+              "title": "type=\"text\"",
+              "explanation": "Single-line text",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>text: <input type=\"text\"></label>\n<p><small>Single-line text</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"password\"",
+              "explanation": "Masked text for secrets",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>password: <input type=\"password\"></label>\n<p><small>Masked text for secrets</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"email\"",
+              "explanation": "Email address with basic format checking",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>email: <input type=\"email\"></label>\n<p><small>Email address with basic format checking</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"number\"",
+              "explanation": "Numeric input",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>number: <input type=\"number\"></label>\n<p><small>Numeric input</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"checkbox\"",
+              "explanation": "On/off toggle; several may be selected",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>checkbox: <input type=\"checkbox\" name=\"demo\"></label>\n<p><small>On/off toggle; several may be selected</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"radio\"",
+              "explanation": "Choose one option in a named group",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>radio: <input type=\"radio\" name=\"demo\"></label>\n<p><small>Choose one option in a named group</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"date\"",
+              "explanation": "Date picker (browser UI varies)",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>date: <input type=\"date\"></label>\n<p><small>Date picker (browser UI varies)</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"time\"",
+              "explanation": "Time picker",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>time: <input type=\"time\"></label>\n<p><small>Time picker</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"file\"",
+              "explanation": "File upload control",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>file: <input type=\"file\"></label>\n<p><small>File upload control</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"range\"",
+              "explanation": "Slider for a numeric range",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>range: <input type=\"range\"></label>\n<p><small>Slider for a numeric range</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"color\"",
+              "explanation": "Color swatch picker",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>color: <input type=\"color\"></label>\n<p><small>Color swatch picker</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"submit\"",
+              "explanation": "Submits the form",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>submit: <input type=\"submit\" value=\"submit\"></label>\n<p><small>Submits the form</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"reset\"",
+              "explanation": "Resets fields to defaults",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>reset: <input type=\"reset\" value=\"reset\"></label>\n<p><small>Resets fields to defaults</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            },
+            {
+              "title": "type=\"hidden\"",
+              "explanation": "Not displayed; still submitted",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<label>hidden: <input type=\"hidden\"></label>\n<p><small>Not displayed; still submitted</small></p>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "input-types",
+          "title": "Important input types",
+          "attributes": []
+        },
+        {
+          "tags": [
+            "forms",
+            "attributes"
+          ],
+          "level": "beginner",
+          "summary": "name, value, placeholder, required, and other attributes that control form behavior.",
+          "description": "name identifies the field in submitted data. value is the current or default value. placeholder is a hint, not a label. required blocks submit if empty. disabled makes a control unusable and excludes it from submit. readonly keeps a value visible but not editable. checked/selected set defaults for checkboxes/radios/options. min, max, step constrain numbers/dates/ranges. pattern is a regular expression for custom text validation.",
+          "whenToUse": "Wire forms correctly for validation and submission.",
+          "whenNotToUse": "Do not use placeholder instead of a visible label.",
+          "useCases": [
+            {
+              "title": "required + pattern",
+              "explanation": "Try submitting empty or invalid values.",
+              "files": [
+                {
+                  "language": "html",
+                  "code": "<form onsubmit=\"event.preventDefault(); alert('OK');\">\n  <label>Code <input name=\"code\" required pattern=\"[A-Z]{3}\" placeholder=\"ABC\"></label>\n  <button>Check</button>\n</form>"
+                }
+              ],
+              "render": true,
+              "resultNote": ""
+            }
+          ],
+          "commonMistakes": [
+            "Using placeholder as the only label.",
+            "Expecting disabled fields to submit."
+          ],
+          "beginnerTips": [],
+          "advancedNotes": [],
+          "related": [],
+          "id": "form-attributes",
+          "title": "Common form attributes",
+          "attributes": [
+            {
+              "name": "name",
+              "description": "Field key in form data."
+            },
+            {
+              "name": "value",
+              "description": "Current value of the control."
+            },
+            {
+              "name": "placeholder",
+              "description": "Hint text shown when empty."
+            },
+            {
+              "name": "required",
+              "description": "Must be filled before submit."
+            },
+            {
+              "name": "disabled",
+              "description": "Non-interactive; not submitted."
+            },
+            {
+              "name": "readonly",
+              "description": "Not editable but still submitted."
+            },
+            {
+              "name": "checked",
+              "description": "Default on for checkbox/radio."
+            },
+            {
+              "name": "selected",
+              "description": "Default option in a select."
+            },
+            {
+              "name": "min / max / step",
+              "description": "Numeric/date/range constraints."
+            },
+            {
+              "name": "pattern",
+              "description": "Regex for text validation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
