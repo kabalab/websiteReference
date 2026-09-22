@@ -89,7 +89,7 @@ export function initTocSpy() {
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        const id = entry.target.id.replace(/^sub-/, "");
+        const id = entry.target.id.replace(/^sub-/, "").replace(/^topic-/, "");
         toc.querySelectorAll("a").forEach((a) => {
           a.classList.toggle("is-active", a.dataset.subId === id);
         });
@@ -98,6 +98,7 @@ export function initTocSpy() {
     { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
   );
 
-  document.querySelectorAll(".subsection-block").forEach((el) => observer.observe(el));
+  document.querySelectorAll(".subsection-block:not(.guide-section-block)").forEach((el) => observer.observe(el));
+  document.querySelectorAll(".guide-step").forEach((el) => observer.observe(el));
   return observer;
 }

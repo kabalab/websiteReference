@@ -28,6 +28,34 @@ function escapeHtml(s) {
 export function buildSearchIndex(sections) {
   const index = [];
   for (const section of sections) {
+    if (section.kind === "guide") {
+      (section.steps || []).forEach((step, i) => {
+        const hay = [
+          step.title,
+          ...(step.body || []),
+          ...(step.tips || []),
+          ...(step.mistakes || []),
+          ...((step.links || []).map((l) => l.label || "")),
+          ...((step.images || []).map((img) => img.caption || img.alt || "")),
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+        index.push({
+          sectionId: section.id,
+          sectionTitle: section.title,
+          subsectionId: "steps",
+          subsectionTitle: `Step ${i + 1}`,
+          topicId: step.id,
+          title: step.title,
+          summary: (step.body && step.body[0]) || "",
+          href: `#/${section.id}/${step.id}`,
+          hay: normalize(hay),
+        });
+      });
+      continue;
+    }
+
     for (const sub of section.subsections || []) {
       for (const topic of sub.topics || []) {
         const hay = [

@@ -276,6 +276,16 @@ a:hover {
   transform: translateY(-2px);
 }
 
+.overview-card-kind {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+}
+
 .overview-card-title {
   margin: 0 0 0.4rem;
   font-size: 1.05rem;

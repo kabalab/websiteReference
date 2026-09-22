@@ -1,6 +1,6 @@
 # Web Development Learning Reference
 
-A static, content-driven reference for learning HTML, CSS, JavaScript, and GitHub Pages.
+A static, content-driven reference for learning HTML, CSS, and JavaScript, plus step-by-step guides for creating a GitHub repo and publishing with GitHub Pages.
 
 ## Run locally
 
@@ -27,11 +27,11 @@ Then visit the printed URL (for example `http://localhost:3000`).
 
 ## Add a topic
 
-Edit the matching file under `data/` (for example `data/css.json`). Copy an existing topic object and change `id`, `title`, and the teaching fields. The UI regenerates automatically.
+Edit the matching file under `scripts/content/` (preferred) or `data/`, then run `node scripts/generate-content.mjs` if you edited a script. See [ADDING-CONTENT.md](ADDING-CONTENT.md) for reference topics and guide steps.
 
 ## Add a section
 
-1. Create `data/my-section.json` using the same schema as the other section files.
+1. Create `data/my-section.json` using the same schema as the other section files (or `kind: "guide"` with a `steps` array).
 2. Add an entry to `data/sections.json` with `id`, `title`, `hash`, `dataFile`, `order`, and `description`.
 
 No layout HTML changes are required.

@@ -16,8 +16,13 @@ export async function loadSection(sectionMeta) {
   const res = await fetch(sectionMeta.dataFile);
   if (!res.ok) throw new Error(`Failed to load ${sectionMeta.dataFile}`);
   const data = await res.json();
-  cache.set(key, data);
-  return data;
+  const merged = {
+    ...data,
+    kind: data.kind || sectionMeta.kind || "reference",
+    description: data.description || sectionMeta.description || "",
+  };
+  cache.set(key, merged);
+  return merged;
 }
 
 export async function loadAllSections() {
@@ -27,6 +32,16 @@ export async function loadAllSections() {
 }
 
 export function findTopic(section, topicId) {
+  if (section.kind === "guide") {
+    const step = (section.steps || []).find((s) => s.id === topicId);
+    if (step) {
+      return {
+        subsection: { id: "steps", title: "Steps" },
+        topic: step,
+      };
+    }
+    return null;
+  }
   for (const sub of section.subsections || []) {
     const topic = (sub.topics || []).find((t) => t.id === topicId);
     if (topic) return { subsection: sub, topic };
@@ -37,6 +52,10 @@ export function findTopic(section, topicId) {
 export function countTopics(sections) {
   let n = 0;
   for (const section of sections) {
+    if (section.kind === "guide") {
+      n += (section.steps || []).length;
+      continue;
+    }
     for (const sub of section.subsections || []) {
       n += (sub.topics || []).length;
     }

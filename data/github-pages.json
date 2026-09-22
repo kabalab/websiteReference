@@ -1,487 +1,203 @@
 {
   "id": "github-pages",
-  "title": "GitHub Pages",
+  "title": "Publish with GitHub Pages",
   "hash": "github-pages",
-  "intro": "A practical beginner-friendly path to publish a website for free with GitHub Pages. GitHub’s buttons and labels change over time — focus on the ideas: repository → files → Pages settings → public URL → commit updates.",
-  "subsections": [
+  "kind": "guide",
+  "intro": "Turn an existing GitHub repository into a free public website. Complete Create a GitHub Repo first if you do not have files on GitHub yet. GitHub’s buttons change over time — focus on: Pages settings → public URL → commit updates.",
+  "steps": [
     {
-      "id": "overview",
-      "title": "Overview",
-      "topics": [
+      "id": "what-github-pages-is",
+      "title": "What GitHub Pages is",
+      "body": [
+        "GitHub Pages serves HTML, CSS, JavaScript, images, and other static files from a repository. It does not run server-side languages like PHP or a custom database on the Pages host.",
+        "That makes it perfect for portfolios, documentation, and learning projects — including this reference site. Your site gets a URL such as https://USERNAME.github.io/REPO/."
+      ],
+      "links": [],
+      "images": [
         {
-          "tags": [
-            "github-pages",
-            "guide",
-            "what-github-pages-is"
-          ],
-          "level": "beginner",
-          "summary": "A free static hosting service that turns a GitHub repository into a public website.",
-          "description": "GitHub Pages serves HTML, CSS, JavaScript, images, and other static files from a repository. It does not run server-side languages like PHP or a custom database on the Pages host. That makes it perfect for portfolios, documentation, and learning projects — including this reference site. Your site gets a URL such as https://USERNAME.github.io/REPO/.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "what-github-pages-is",
-          "title": "What GitHub Pages is",
-          "attributes": [],
-          "type": "guide",
-          "visual": "Your files on GitHub\n        ↓\nGitHub Pages builds/publishes\n        ↓\nhttps://you.github.io/your-repo/"
+          "src": "assets/guides/github-pages/01-what-github-pages-is.svg",
+          "alt": "Placeholder: files on GitHub becoming a live website URL",
+          "caption": "Replace with a diagram or screenshot of a live github.io site"
         }
+      ],
+      "tips": [
+        "Static means the server sends files as-is; interactivity still works with client-side JavaScript.",
+        "You can use a custom domain later if you want."
+      ],
+      "mistakes": []
+    },
+    {
+      "id": "prerequisites",
+      "title": "Prerequisites",
+      "body": [
+        "You need a GitHub account, a public repository, and at least an index.html file on the branch you will publish (usually main).",
+        "If you have not done that yet, follow the Create a GitHub Repo guide first, then return here."
+      ],
+      "links": [
+        {
+          "label": "Create a GitHub Repo guide",
+          "href": "#/github-repo"
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/guides/github-pages/02-prerequisites.svg",
+          "alt": "Placeholder: checklist for account, repo, and index.html",
+          "caption": "Replace with a screenshot showing index.html in your repo"
+        }
+      ],
+      "tips": [],
+      "mistakes": []
+    },
+    {
+      "id": "enabling-github-pages",
+      "title": "Enable GitHub Pages",
+      "body": [
+        "Open your repository on GitHub → Settings → Pages (sometimes under “Code and automation”). GitHub’s settings layout changes — look for Pages.",
+        "Choose a publishing source (usually Deploy from a branch). Select the branch (main) and folder (/ root or /docs). Save. Wait a minute for the first deploy."
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/guides/github-pages/03-enabling-github-pages.svg",
+          "alt": "Placeholder: repository Settings → Pages",
+          "caption": "Replace with a screenshot of Settings → Pages"
+        }
+      ],
+      "tips": [
+        "If you cannot find Pages, use the Settings search box.",
+        "Build status may appear as a green check on commits when using Actions-based Pages."
+      ],
+      "mistakes": []
+    },
+    {
+      "id": "choosing-publishing-source",
+      "title": "Choose the publishing source",
+      "body": [
+        "Common beginner choice: branch main, folder / (root). If you keep site files in a docs/ folder, select that.",
+        "Only one source is live. Commits on that branch update the site."
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/guides/github-pages/04-choosing-publishing-source.svg",
+          "alt": "Placeholder: branch and folder source options",
+          "caption": "Replace with a screenshot of Deploy from a branch options"
+        }
+      ],
+      "tips": [],
+      "mistakes": []
+    },
+    {
+      "id": "getting-website-url",
+      "title": "Find your website URL",
+      "body": [
+        "After enabling, Pages shows a URL like https://USERNAME.github.io/REPO_NAME/. Visit it.",
+        "If you see a 404, wait a minute, confirm index.html is at the published root, and hard-refresh. Project sites need the repo name in the path; assets should use relative URLs."
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/guides/github-pages/05-getting-website-url.svg",
+          "alt": "Placeholder: Pages settings showing the public URL",
+          "caption": "Replace with a screenshot of your Pages URL on the settings page"
+        }
+      ],
+      "tips": [
+        "For project Pages, prefer relative paths (./style.css) so assets resolve under the repo subpath."
+      ],
+      "mistakes": [
+        "Expecting https://username.github.io without the repo name for a project repo.",
+        "Using absolute paths starting with / that ignore the project subpath."
       ]
     },
     {
-      "id": "account",
-      "title": "Account",
-      "topics": [
+      "id": "updating-website",
+      "title": "Update your website",
+      "body": [
+        "Change a file locally or on github.com → commit to the publishing branch → wait for Pages to rebuild → refresh the live URL.",
+        "Caching can briefly show old assets — hard refresh if needed."
+      ],
+      "links": [],
+      "images": [
         {
-          "tags": [
-            "github-pages",
-            "guide",
-            "creating-github-account"
-          ],
-          "level": "beginner",
-          "summary": "Sign up at github.com, verify email, and secure the account.",
-          "description": "Go to https://github.com and create an account. Choose a username carefully — it appears in default Pages URLs (username.github.io). Verify your email so you can create repositories. Enable two-factor authentication when you can. You do not need to know Git yet to publish with the website upload flow.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "creating-github-account",
-          "title": "Creating a GitHub account",
-          "attributes": [],
-          "type": "guide"
+          "src": "assets/guides/github-pages/06-updating-website.svg",
+          "alt": "Placeholder: edit, commit, and live site refresh flow",
+          "caption": "Replace with a screenshot of committing a change on GitHub"
         }
+      ],
+      "tips": [],
+      "mistakes": []
+    },
+    {
+      "id": "github-vs-local-git",
+      "title": "Edit on GitHub vs Git locally",
+      "body": [
+        "GitHub website editing is great for small text changes. Local Git (clone, branch, commit, push) scales better for real development and works with editors like Cursor or VS Code.",
+        "Learn the web flow first; add the Git CLI when you are ready."
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/guides/github-pages/07-github-vs-local-git.svg",
+          "alt": "Placeholder: web editor vs local Git workflow",
+          "caption": "Replace with screenshots comparing web edit and local push"
+        }
+      ],
+      "tips": [
+        "You do not need to master Git before publishing your first page.",
+        "When you learn Git: status → add → commit → push is the core loop."
+      ],
+      "mistakes": []
+    },
+    {
+      "id": "common-problems",
+      "title": "Fix common problems",
+      "body": [
+        "404 at site URL: Pages not enabled, wrong branch/folder, or missing index.html. Unstyled page: wrong CSS path. Old content: wait for deploy or hard refresh.",
+        "Forms that POST nowhere: Pages has no backend — use a form service or static-only UX. Check the Actions/Pages build log if available."
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/guides/github-pages/08-common-problems.svg",
+          "alt": "Placeholder: browser 404 or missing stylesheet",
+          "caption": "Replace with a screenshot of a common error you want to demonstrate"
+        }
+      ],
+      "tips": [
+        "Open DevTools Network tab and look for red 404 files."
+      ],
+      "mistakes": [
+        "Assuming a missing stylesheet means CSS is “broken” when the path 404s.",
+        "Publishing from an empty branch."
       ]
     },
     {
-      "id": "repository",
-      "title": "Repository",
-      "topics": [
+      "id": "custom-domains",
+      "title": "Add a custom domain (optional)",
+      "body": [
+        "Buy a domain from a registrar. In repo Pages settings, add your custom domain and follow GitHub’s DNS instructions (usually A/AAAA or CNAME records).",
+        "Enable HTTPS once DNS verifies. DNS changes can take time to propagate. Exact DNS screens differ by registrar — trust their docs plus GitHub’s current custom domain guide."
+      ],
+      "links": [
         {
-          "tags": [
-            "github-pages",
-            "guide",
-            "creating-a-repository"
-          ],
-          "level": "beginner",
-          "summary": "A repository (repo) is a project folder GitHub stores for you — with history.",
-          "description": "Click the + menu → New repository. Choose a name (for example my-website). Public repositories can use free GitHub Pages. Add a README if you want a starting file. You can skip .gitignore and license while learning. Create the repository.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "creating-a-repository",
-          "title": "Creating a repository",
-          "attributes": [],
-          "type": "guide"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "understanding-a-repository"
-          ],
-          "level": "beginner",
-          "summary": "Files + commit history + collaboration features.",
-          "description": "A repository holds your project files and tracks changes as commits (snapshots with messages). Branches are parallel versions; beginners can stay on main. Issues and Pull Requests help teams — optional for a solo first site. Think of the repo as both storage and a timeline of your work.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "understanding-a-repository",
-          "title": "Understanding a repository",
-          "attributes": [],
-          "type": "guide",
-          "visual": "Repository\n├── commits (history)\n├── branches (main, …)\n└── files (HTML, CSS, JS, images)"
+          "label": "GitHub Docs: custom domains",
+          "href": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site"
         }
-      ]
-    },
-    {
-      "id": "files",
-      "title": "Website files",
-      "topics": [
+      ],
+      "images": [
         {
-          "tags": [
-            "github-pages",
-            "guide",
-            "creating-website-files"
-          ],
-          "level": "beginner",
-          "summary": "Prepare HTML, CSS, JS, and assets on your computer (or create them on GitHub).",
-          "description": "A simple site needs at least index.html. Add style.css and script.js as you grow. Keep names lowercase without spaces. You can write files in any text editor (VS Code, Notepad++, Cursor).",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "creating-website-files",
-          "title": "Creating your website files",
-          "attributes": [],
-          "type": "guide",
-          "visual": "my-website/\n├── index.html\n├── style.css\n├── script.js\n└── images/\n    └── logo.png"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "uploading-files"
-          ],
-          "level": "beginner",
-          "summary": "Add files through GitHub’s web UI or push with Git.",
-          "description": "On GitHub: open the repo → Add file → Upload files → drag your files → commit. Or use Git locally: git add, git commit, git push. Both end with files on the main branch. The web UI is enough for your first publish.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "uploading-files",
-          "title": "Uploading files",
-          "attributes": [],
-          "type": "guide"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "creating-index-html"
-          ],
-          "level": "beginner",
-          "summary": "The default homepage filename servers look for.",
-          "description": "GitHub Pages serves index.html when someone visits your site root. Start from a complete HTML5 skeleton with charset, viewport, and a title. Put visible content in the body.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [
-            {
-              "title": "Starter index.html",
-              "explanation": "",
-              "files": [
-                {
-                  "language": "html",
-                  "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>My Website</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <h1>Hello</h1>\n  <script src=\"script.js\"></script>\n</body>\n</html>"
-                }
-              ],
-              "render": true,
-              "resultNote": ""
-            }
-          ],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "creating-index-html",
-          "title": "Creating index.html",
-          "attributes": [],
-          "type": "guide"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "creating-css-files"
-          ],
-          "level": "beginner",
-          "summary": "Put styles in .css files and link them from HTML.",
-          "description": "Create style.css beside index.html. Link it in the head. External CSS keeps structure and presentation separated — the same lesson this reference site teaches.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [
-            {
-              "title": "Rendered example",
-              "explanation": "",
-              "files": [
-                {
-                  "language": "html",
-                  "code": "<p>After linking CSS, rules in style.css style your page.</p>"
-                }
-              ],
-              "render": true,
-              "resultNote": ""
-            }
-          ],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "creating-css-files",
-          "title": "Creating CSS files",
-          "syntax": "<link rel=\"stylesheet\" href=\"style.css\">",
-          "attributes": [],
-          "type": "guide"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "creating-js-files"
-          ],
-          "level": "beginner",
-          "summary": "Add interactivity with a .js file referenced by a script tag.",
-          "description": "Create script.js and load it at the end of body (or as type=\"module\"). Confirm the path is correct relative to the HTML file.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "creating-js-files",
-          "title": "Creating JavaScript files",
-          "syntax": "<script src=\"script.js\"></script>",
-          "attributes": [],
-          "type": "guide"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "organizing-project"
-          ],
-          "level": "beginner",
-          "summary": "Use clear folders for css, js, images, and data.",
-          "description": "As projects grow, split files into folders. Update relative paths when you move files. A clean structure makes GitHub Pages debugging easier.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "organizing-project",
-          "title": "Organizing your project",
-          "attributes": [],
-          "type": "guide",
-          "visual": "my-website/\n├── index.html\n├── css/\n│   └── style.css\n├── js/\n│   └── script.js\n├── assets/\n│   └── images/\n└── README.md"
+          "src": "assets/guides/github-pages/09-custom-domains.svg",
+          "alt": "Placeholder: custom domain field in Pages settings",
+          "caption": "Replace with a screenshot of the custom domain settings"
         }
-      ]
-    },
-    {
-      "id": "connect",
-      "title": "Connect the files",
-      "topics": [
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "linking-css-js"
-          ],
-          "level": "beginner",
-          "summary": "HTML must reference your CSS and JS paths correctly.",
-          "description": "Use link for CSS in head and script for JS. Paths are relative to the HTML file’s location. After publishing, a wrong path shows up as missing styles or console 404 errors.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [
-            {
-              "title": "Rendered example",
-              "explanation": "",
-              "files": [
-                {
-                  "language": "html",
-                  "code": "<p><code>&lt;link rel=\"stylesheet\" href=\"css/style.css\"&gt;</code></p>\n<p><code>&lt;script src=\"js/script.js\"&gt;&lt;/script&gt;</code></p>"
-                }
-              ],
-              "render": true,
-              "resultNote": ""
-            }
-          ],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "linking-css-js",
-          "title": "Linking CSS and JavaScript",
-          "attributes": [],
-          "type": "guide"
-        }
-      ]
-    },
-    {
-      "id": "publish",
-      "title": "Publish",
-      "topics": [
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "enabling-github-pages"
-          ],
-          "level": "beginner",
-          "summary": "Turn on Pages in the repository settings.",
-          "description": "Open your repository on GitHub → Settings → Pages (sometimes under “Code and automation”). GitHub’s settings layout changes over time — look for Pages. Choose a publishing source (usually Deploy from a branch). Select the branch (main) and folder (/ root or /docs). Save. Wait a minute for the first deploy.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "enabling-github-pages",
-          "title": "Enabling GitHub Pages",
-          "attributes": [],
-          "type": "guide"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "choosing-publishing-source"
-          ],
-          "level": "beginner",
-          "summary": "Pick which branch/folder (or Action) becomes the live site.",
-          "description": "Common beginner choice: branch main, folder / (root). If you keep docs in a docs/ folder, select that. Only one source is live. Commit on that branch to update the site.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "choosing-publishing-source",
-          "title": "Choosing the publishing source",
-          "attributes": [],
-          "type": "guide",
-          "visual": "Settings → Pages\n  Source: Deploy from a branch\n  Branch: main\n  Folder: / (root)"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "getting-website-url"
-          ],
-          "level": "beginner",
-          "summary": "Find the public URL on the Pages settings screen.",
-          "description": "After enabling, Pages shows a URL like https://USERNAME.github.io/REPO_NAME/. Visit it. If you see a 404, wait a minute, confirm index.html is at the published root, and hard-refresh. Project sites need the repo name in the path; assets must use relative URLs.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "getting-website-url",
-          "title": "Getting your website URL",
-          "attributes": [],
-          "type": "guide"
-        }
-      ]
-    },
-    {
-      "id": "update",
-      "title": "Updating",
-      "topics": [
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "updating-website"
-          ],
-          "level": "beginner",
-          "summary": "Edit files → commit → Pages republishes.",
-          "description": "Change a file locally or on github.com → commit to the publishing branch → wait for Pages to rebuild → refresh the live URL. Caching can briefly show old assets — hard refresh if needed.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "updating-website",
-          "title": "Updating your website",
-          "attributes": [],
-          "type": "guide",
-          "visual": "Edit files\n   ↓\nCommit changes\n   ↓\nGitHub Pages rebuilds\n   ↓\nWebsite updates"
-        },
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "github-vs-local-git"
-          ],
-          "level": "beginner",
-          "summary": "Two workflows — same destination.",
-          "description": "GitHub website editing is great for small text changes. Local Git (clone, branch, commit, push) scales better for real development and works with editors like Cursor/VS Code. Learn the web flow first; add Git CLI when you are ready.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "github-vs-local-git",
-          "title": "Editing on GitHub vs using Git locally",
-          "attributes": [],
-          "type": "guide"
-        }
-      ]
-    },
-    {
-      "id": "troubleshoot",
-      "title": "Troubleshooting",
-      "topics": [
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "common-problems"
-          ],
-          "level": "beginner",
-          "summary": "404s, missing CSS, long waits, and private repo limits.",
-          "description": "404 at site URL: Pages not enabled, wrong branch/folder, or missing index.html. Unstyled page: wrong CSS path or still loading. Old content: wait for deploy or hard refresh. Forms that POST nowhere: Pages has no backend — use a form service or static-only UX. Check the Actions/Pages build log if available.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "common-problems",
-          "title": "Common problems",
-          "attributes": [],
-          "type": "guide"
-        }
-      ]
-    },
-    {
-      "id": "custom",
-      "title": "Custom domains",
-      "topics": [
-        {
-          "tags": [
-            "github-pages",
-            "guide",
-            "custom-domains"
-          ],
-          "level": "beginner",
-          "summary": "Point your own domain at GitHub Pages.",
-          "description": "Buy a domain from a registrar. In repo Pages settings, add your custom domain and follow GitHub’s DNS instructions (usually A/AAAA or CNAME records). Enable HTTPS once DNS verifies. DNS changes can take time to propagate. Exact DNS screens differ by registrar — trust their docs plus GitHub’s current custom domain guide.",
-          "whenToUse": "Follow this step in order when publishing your first site.",
-          "whenNotToUse": "Skip only if you have already completed this step.",
-          "useCases": [],
-          "commonMistakes": [],
-          "beginnerTips": [],
-          "advancedNotes": [],
-          "related": [],
-          "id": "custom-domains",
-          "title": "Custom domains",
-          "attributes": [],
-          "type": "guide"
-        }
-      ]
+      ],
+      "tips": [
+        "Get the default github.io URL working before adding a custom domain.",
+        "Keep the GitHub docs tab open while editing DNS — UIs change."
+      ],
+      "mistakes": []
     }
   ]
 }

@@ -32,11 +32,21 @@
     "description": "Make pages interactive: variables, functions, the DOM, events, storage, fetch, and more."
   },
   {
+    "id": "github-repo",
+    "title": "Create a GitHub Repo",
+    "hash": "github-repo",
+    "dataFile": "data/github-repo.json",
+    "order": 5,
+    "kind": "guide",
+    "description": "Step-by-step: create a GitHub account, make a repository, and upload your website files."
+  },
+  {
     "id": "github-pages",
-    "title": "GitHub Pages",
+    "title": "Publish with GitHub Pages",
     "hash": "github-pages",
     "dataFile": "data/github-pages.json",
-    "order": 5,
-    "description": "A practical step-by-step guide to creating and publishing a website with GitHub Pages."
+    "order": 6,
+    "kind": "guide",
+    "description": "Step-by-step: turn your repository into a free public website with GitHub Pages."
   }
 ]

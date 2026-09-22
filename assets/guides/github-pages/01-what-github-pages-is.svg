@@ -1,0 +1,15 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="What GitHub Pages is">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="540" fill="#f1f5f9"/>
+  <rect width="960" height="540" fill="url(#grid)"/>
+  <rect x="48" y="48" width="864" height="444" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="10 8"/>
+  <circle cx="120" cy="120" r="36" fill="#0ea5e9"/>
+  <text x="120" y="128" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">1</text>
+  <text x="480" y="250" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" fill="#334155">Screenshot placeholder</text>
+  <text x="480" y="295" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#64748b">What GitHub Pages is</text>
+  <text x="480" y="340" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#94a3b8">Replace this file with your PNG or JPG screenshot</text>
+</svg>
