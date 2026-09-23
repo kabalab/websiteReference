@@ -13,16 +13,9 @@
         "That makes it perfect for portfolios, documentation, and learning projects — including this reference site. Your site gets a URL such as https://USERNAME.github.io/REPO/."
       ],
       "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/01-what-github-pages-is.svg",
-          "alt": "Placeholder: files on GitHub becoming a live website URL",
-          "caption": "Replace with a diagram or screenshot of a live github.io site"
-        }
-      ],
+      "images": [],
       "tips": [
-        "Static means the server sends files as-is; interactivity still works with client-side JavaScript.",
-        "You can use a custom domain later if you want."
+        "Static means the server sends files as-is; interactivity still works with client-side JavaScript."
       ],
       "mistakes": []
     },
@@ -30,8 +23,7 @@
       "id": "prerequisites",
       "title": "Prerequisites",
       "body": [
-        "You need a GitHub account, a public repository, and at least an index.html file on the branch you will publish (usually main).",
-        "If you have not done that yet, follow the Create a GitHub Repo guide first, then return here."
+        "If you have not gone through the Create a GitHub Repo guide then do so first, then return here."
       ],
       "links": [
         {
@@ -39,13 +31,7 @@
           "href": "#/github-repo"
         }
       ],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/02-prerequisites.svg",
-          "alt": "Placeholder: checklist for account, repo, and index.html",
-          "caption": "Replace with a screenshot showing index.html in your repo"
-        }
-      ],
+      "images": [],
       "tips": [],
       "mistakes": []
     },
@@ -53,39 +39,14 @@
       "id": "enabling-github-pages",
       "title": "Enable GitHub Pages",
       "body": [
-        "Open your repository on GitHub → Settings → Pages (sometimes under “Code and automation”). GitHub’s settings layout changes — look for Pages.",
-        "Choose a publishing source (usually Deploy from a branch). Select the branch (main) and folder (/ root or /docs). Save. Wait a minute for the first deploy."
+        "Open your repository on GitHub → Settings → Pages → choose a publishing source (usually Deploy from a branch) → select the branch (main) and folder (/ root or /docs if you keep your site files in a docs/ folder) → save. Wait a minute for the first deploy."
       ],
       "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/03-enabling-github-pages.svg",
-          "alt": "Placeholder: repository Settings → Pages",
-          "caption": "Replace with a screenshot of Settings → Pages"
-        }
-      ],
+      "images": [],
       "tips": [
         "If you cannot find Pages, use the Settings search box.",
-        "Build status may appear as a green check on commits when using Actions-based Pages."
+        "If you see a green check on commits then your pages are enabled."
       ],
-      "mistakes": []
-    },
-    {
-      "id": "choosing-publishing-source",
-      "title": "Choose the publishing source",
-      "body": [
-        "Common beginner choice: branch main, folder / (root). If you keep site files in a docs/ folder, select that.",
-        "Only one source is live. Commits on that branch update the site."
-      ],
-      "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/04-choosing-publishing-source.svg",
-          "alt": "Placeholder: branch and folder source options",
-          "caption": "Replace with a screenshot of Deploy from a branch options"
-        }
-      ],
-      "tips": [],
       "mistakes": []
     },
     {
@@ -96,19 +57,10 @@
         "If you see a 404, wait a minute, confirm index.html is at the published root, and hard-refresh. Project sites need the repo name in the path; assets should use relative URLs."
       ],
       "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/05-getting-website-url.svg",
-          "alt": "Placeholder: Pages settings showing the public URL",
-          "caption": "Replace with a screenshot of your Pages URL on the settings page"
-        }
-      ],
-      "tips": [
-        "For project Pages, prefer relative paths (./style.css) so assets resolve under the repo subpath."
-      ],
+      "images": [],
+      "tips": [],
       "mistakes": [
-        "Expecting https://username.github.io without the repo name for a project repo.",
-        "Using absolute paths starting with / that ignore the project subpath."
+        "Expecting https://username.github.io without the repo name for a project repo."
       ]
     },
     {
@@ -116,86 +68,23 @@
       "title": "Update your website",
       "body": [
         "Change a file locally or on github.com → commit to the publishing branch → wait for Pages to rebuild → refresh the live URL.",
-        "Caching can briefly show old assets — hard refresh if needed."
+        "Once you see the green check on commits then your changes are live."
       ],
       "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/06-updating-website.svg",
-          "alt": "Placeholder: edit, commit, and live site refresh flow",
-          "caption": "Replace with a screenshot of committing a change on GitHub"
-        }
-      ],
+      "images": [],
       "tips": [],
       "mistakes": []
     },
     {
       "id": "github-vs-local-git",
-      "title": "Edit on GitHub vs Git locally",
+      "title": "Edit on GitHub vs VS Code locally",
       "body": [
-        "GitHub website editing is great for small text changes. Local Git (clone, branch, commit, push) scales better for real development and works with editors like Cursor or VS Code.",
-        "Learn the web flow first; add the Git CLI when you are ready."
+        "GitHub website editing is great for small text changes. VS code scales better for real development."
       ],
       "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/07-github-vs-local-git.svg",
-          "alt": "Placeholder: web editor vs local Git workflow",
-          "caption": "Replace with screenshots comparing web edit and local push"
-        }
-      ],
+      "images": [],
       "tips": [
-        "You do not need to master Git before publishing your first page.",
-        "When you learn Git: status → add → commit → push is the core loop."
-      ],
-      "mistakes": []
-    },
-    {
-      "id": "common-problems",
-      "title": "Fix common problems",
-      "body": [
-        "404 at site URL: Pages not enabled, wrong branch/folder, or missing index.html. Unstyled page: wrong CSS path. Old content: wait for deploy or hard refresh.",
-        "Forms that POST nowhere: Pages has no backend — use a form service or static-only UX. Check the Actions/Pages build log if available."
-      ],
-      "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/08-common-problems.svg",
-          "alt": "Placeholder: browser 404 or missing stylesheet",
-          "caption": "Replace with a screenshot of a common error you want to demonstrate"
-        }
-      ],
-      "tips": [
-        "Open DevTools Network tab and look for red 404 files."
-      ],
-      "mistakes": [
-        "Assuming a missing stylesheet means CSS is “broken” when the path 404s.",
-        "Publishing from an empty branch."
-      ]
-    },
-    {
-      "id": "custom-domains",
-      "title": "Add a custom domain (optional)",
-      "body": [
-        "Buy a domain from a registrar. In repo Pages settings, add your custom domain and follow GitHub’s DNS instructions (usually A/AAAA or CNAME records).",
-        "Enable HTTPS once DNS verifies. DNS changes can take time to propagate. Exact DNS screens differ by registrar — trust their docs plus GitHub’s current custom domain guide."
-      ],
-      "links": [
-        {
-          "label": "GitHub Docs: custom domains",
-          "href": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site"
-        }
-      ],
-      "images": [
-        {
-          "src": "assets/guides/github-pages/09-custom-domains.svg",
-          "alt": "Placeholder: custom domain field in Pages settings",
-          "caption": "Replace with a screenshot of the custom domain settings"
-        }
-      ],
-      "tips": [
-        "Get the default github.io URL working before adding a custom domain.",
-        "Keep the GitHub docs tab open while editing DNS — UIs change."
+        "You can use the exstention 'live server' in VS code to see your changes live in the browser. A really helpful tool for development."
       ],
       "mistakes": []
     }

@@ -3,7 +3,7 @@
   "title": "Create a GitHub Repo",
   "hash": "github-repo",
   "kind": "guide",
-  "intro": "A step-by-step path to create a GitHub account, make a repository, and get your website files onto GitHub. Reorder or edit steps in scripts/content/github-repo.mjs — then regenerate content.",
+  "intro": "A step-by-step path to create a GitHub account, make a repository, and get your website files onto GitHub.",
   "steps": [
     {
       "id": "what-is-a-repository",
@@ -15,9 +15,9 @@
       "links": [],
       "images": [
         {
-          "src": "assets/guides/github-repo/01-what-is-a-repository.svg",
-          "alt": "Placeholder: diagram of a repository holding files and history",
-          "caption": "Replace with a screenshot or diagram of a repository overview"
+          "src": "assets/guides/github-repo/01-what-is-a-repository.png",
+          "alt": "ERROR: IMAGE NOT FOUND",
+          "caption": "You can see all the files the last commit that altered the files and the readme."
         }
       ],
       "tips": [
@@ -30,24 +30,17 @@
       "title": "Create a GitHub account",
       "body": [
         "Go to github.com and sign up. Choose a username carefully — it appears in default site URLs (username.github.io).",
-        "Verify your email so you can create repositories. Enable two-factor authentication when you can."
+        "Verify your email so you can create repositories. Enable two-factor authentication when you can.",
+        "It is very important to use a home email, so that you can recieve any emails from gihub and so that you can keep your github acount after you graduate."
       ],
       "links": [
         {
-          "label": "GitHub home",
-          "href": "https://github.com"
+          "label": "GitHub sighnup",
+          "href": "https://github.com/signup"
         }
       ],
-      "images": [
-        {
-          "src": "assets/guides/github-repo/02-creating-github-account.svg",
-          "alt": "Placeholder: GitHub sign-up page",
-          "caption": "Replace with a screenshot of the GitHub sign-up or account page"
-        }
-      ],
-      "tips": [
-        "Write down your username; you will type it often."
-      ],
+      "images": [],
+      "tips": [],
       "mistakes": [
         "Using an email you cannot access for verification."
       ]
@@ -56,7 +49,7 @@
       "id": "creating-a-repository",
       "title": "Create a repository",
       "body": [
-        "Click the + menu → New repository. Choose a name (for example my-website).",
+        "Click the + or new → New repository. Choose a name (for example my-website). What every you choose tthe website will be username.github.io/your-repository-name",
         "Public repositories can use free GitHub Pages later. Add a README if you want a starting file. You can skip .gitignore and license while learning. Then create the repository."
       ],
       "links": [
@@ -67,9 +60,8 @@
       ],
       "images": [
         {
-          "src": "assets/guides/github-repo/03-creating-a-repository.svg",
-          "alt": "Placeholder: New repository form on GitHub",
-          "caption": "Replace with a screenshot of the New repository form"
+          "src": "assets/guides/github-repo/03-creating-a-repository.png",
+          "alt": "ERROR: IMAGE NOT FOUND"
         }
       ],
       "tips": [
@@ -81,36 +73,22 @@
       ]
     },
     {
-      "id": "understanding-a-repository",
-      "title": "Understand what you just created",
-      "body": [
-        "Your repo holds project files and tracks changes as commits. Branches are parallel versions; beginners can stay on main.",
-        "Issues and Pull Requests help teams — optional for a solo first site."
-      ],
-      "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-repo/04-understanding-a-repository.svg",
-          "alt": "Placeholder: repository file list and commit history",
-          "caption": "Replace with a screenshot of your empty or README-only repo"
-        }
-      ],
-      "tips": [],
-      "mistakes": []
-    },
-    {
       "id": "creating-website-files",
       "title": "Create your website files",
       "body": [
-        "A simple site needs at least index.html. Add style.css and script.js as you grow. Keep names lowercase without spaces.",
-        "You can write files in any text editor (VS Code, Notepad++, Cursor) or create them on GitHub later."
+        "A simple site needs at least index.html. Addding a style.css and script.js is good practice but not necessary, the same thing can be done with <style> and <script> elements. You can also add them later",
+        "You can write files in any text IDE (VS Code is recommended) or create them on GitHub later."
       ],
       "links": [],
       "images": [
         {
-          "src": "assets/guides/github-repo/05-creating-website-files.svg",
-          "alt": "Placeholder: local folder with index.html, CSS, and JS",
-          "caption": "Replace with a screenshot of your local project folder"
+          "src": "assets/guides/github-repo/04-creating-website-files-1.png",
+          "alt": "ERROR: IMAGE NOT FOUND",
+          "caption": "This is without having a style.css or script.js file."
+        },{
+          "src": "assets/guides/github-repo/04-creating-website-files-2.png",
+          "alt": "ERROR: IMAGE NOT FOUND",
+          "caption": "This is with a style.css and script.js file."
         }
       ],
       "tips": [
@@ -119,74 +97,23 @@
       "mistakes": []
     },
     {
-      "id": "uploading-files",
-      "title": "Upload files to the repository",
+      "id": "Committing-files",
+      "title": "Committing files to the repository",
       "body": [
-        "On GitHub: open the repo → Add file → Upload files → drag your files → commit.",
-        "Or use Git locally: git add, git commit, git push. Both end with files on the main branch. The web UI is enough for your first upload."
-      ],
-      "links": [],
-      "images": [
-        {
-          "src": "assets/guides/github-repo/06-uploading-files.svg",
-          "alt": "Placeholder: GitHub Upload files screen",
-          "caption": "Replace with a screenshot of Add file → Upload files"
-        }
-      ],
-      "tips": [
-        "Commit messages should say why you changed something, e.g. “Add homepage markup”."
-      ],
-      "mistakes": []
-    },
-    {
-      "id": "creating-index-html",
-      "title": "Add an index.html homepage",
-      "body": [
-        "Servers look for index.html when someone visits the site root. Start from a complete HTML5 skeleton with charset, viewport, and a title.",
-        "Put visible content in the body. You can expand markup later using the Intro HTML section of this reference."
+        "On vs code go to the source contorl tab → type in the commit message → click the commit button and then click the sync button.",
+        "Or on GitHub: open the repo → Add file → Upload files → drag your files → type a commit message → commit, this is the same as the vs code method."
       ],
       "links": [
         {
-          "label": "Intro HTML section",
-          "href": "#/html"
-        }
-      ],
-      "images": [
-        {
-          "src": "assets/guides/github-repo/07-creating-index-html.svg",
-          "alt": "Placeholder: index.html file in the repository",
-          "caption": "Replace with a screenshot of index.html in your repo"
-        }
-      ],
-      "tips": [],
-      "mistakes": [
-        "Naming the home page home.html — visitors and Pages expect index.html by default."
-      ]
-    },
-    {
-      "id": "organizing-project",
-      "title": "Organize folders (optional)",
-      "body": [
-        "As projects grow, split files into folders such as css/, js/, and images/. Update relative paths when you move files.",
-        "A clean structure makes publishing and debugging easier in the next guide."
-      ],
-      "links": [
-        {
-          "label": "Next: Publish with GitHub Pages",
+          "label": "After committing files: Publish with GitHub Pages",
           "href": "#/github-pages"
         }
       ],
-      "images": [
-        {
-          "src": "assets/guides/github-repo/08-organizing-project.svg",
-          "alt": "Placeholder: project folder tree",
-          "caption": "Replace with a screenshot of your organized project tree"
-        }
-      ],
+      "images": [],
       "tips": [
-        "If CSS “doesn’t work” later, check the href path first."
+        "Commit messages should say why you changed something, e.g. “Add homepage markup”. this is for your own reference and so that others can understand your changes. Also without a commit message you will not be able to push your changes to the repository."
       ],
-      "mistakes": []
+      "mistakes": ["Not typing a commit message"]
     }
   ]
 }

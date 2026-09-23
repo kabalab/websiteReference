@@ -27,7 +27,7 @@ Then visit the printed URL (for example `http://localhost:3000`).
 
 ## Add a topic
 
-Edit the matching file under `scripts/content/` (preferred) or `data/`, then run `node scripts/generate-content.mjs` if you edited a script. See [ADDING-CONTENT.md](ADDING-CONTENT.md) for reference topics and guide steps.
+Edit the matching JSON file in `data/`. See [ADDING-CONTENT.md](ADDING-CONTENT.md) for reference topics and guide steps.
 
 ## Add a section
 

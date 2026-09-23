@@ -1,14 +1,14 @@
 # How to add content
 
+Content lives in `data/`. Each section is a JSON file listed in `data/sections.json`. Save the file and refresh the site.
+
 ## Add a topic (reference sections)
 
-1. Open the matching file under `scripts/content/` (for example `html.mjs`) **or** edit the generated JSON in `data/` directly.
-2. Copy an existing topic object and change `id`, `title`, and teaching fields.
-3. If you edit the scripts, run:
+Reference sections (`html`, `advanced-html`, `css`, `javascript`) use `subsections`, and each subsection has a `topics` array.
 
-```bash
-node scripts/generate-content.mjs
-```
+1. Open the matching file in `data/` (for example `data/html.json`).
+2. Copy an existing topic object inside a subsection's `topics` array.
+3. Change `id`, `title`, and the teaching fields.
 
 ## Topic fields
 
@@ -22,44 +22,42 @@ node scripts/generate-content.mjs
 
 ## Add or edit a guide step
 
-Guides (`kind: "guide"`) are linear numbered steps — used for **Create a GitHub Repo** and **Publish with GitHub Pages**.
+Guides (`kind: "guide"`) are linear numbered steps — used for **Create a GitHub Repo** (`data/github-repo.json`) and **Publish with GitHub Pages** (`data/github-pages.json`).
 
-1. Open `scripts/content/github-repo.mjs` or `scripts/content/github-pages.mjs`.
-2. Copy an existing `guideStep({ ... })` object in the `steps` array.
+1. Open the guide JSON file.
+2. Copy an existing object in the `steps` array.
 3. Change `id`, `title`, `body`, and optional `links`, `images`, `tips`, `mistakes`.
 4. **Reorder** by moving the step object up or down in the array (order = page order).
-5. Run `node scripts/generate-content.mjs`.
 
 ### Guide step fields
 
-```js
-guideStep({
-  id: "create-repo",
-  title: "Create a new repository",
-  body: [
+```json
+{
+  "id": "create-repo",
+  "title": "Create a new repository",
+  "body": [
     "First paragraph.",
     "Second paragraph."
   ],
-  links: [{ label: "GitHub home", href: "https://github.com" }],
-  images: [{
-    src: "assets/guides/github-repo/03-creating-a-repository.svg",
-    alt: "New repository form",
-    caption: "Open the New repository page"
+  "links": [{ "label": "GitHub home", "href": "https://github.com" }],
+  "images": [{
+    "src": "assets/guides/github-repo/03-creating-a-repository.svg",
+    "alt": "New repository form",
+    "caption": "Open the New repository page"
   }],
-  tips: ["Optional tip"],
-  mistakes: ["Optional mistake"]
-})
+  "tips": ["Optional tip"],
+  "mistakes": ["Optional mistake"]
+}
 ```
 
 ### Replacing placeholder images
 
 1. Put a PNG/JPG/SVG in `assets/guides/github-repo/` or `assets/guides/github-pages/`.
-2. Either overwrite the existing filename, or change the step’s `images[].src` to your new file.
-3. Regenerate if you edited the `.mjs` script.
+2. Either overwrite the existing filename, or change the step’s `images[].src` in the guide JSON.
 
 ## Add a section
 
-1. Create `data/my-section.json` (or a builder under `scripts/content/`).
+1. Create `data/my-section.json`.
 2. Register it in `data/sections.json`:
 
 ```json
